@@ -17,9 +17,9 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         WeatherManager weatherManager = new WeatherManager();
-        VBox vBox = weatherManager.getViewManager().loadMainWindow();
+        VBox parent = weatherManager.getViewManager().loadMainWindow();
 
-        Scene scene = new Scene(vBox);
+        Scene scene = new Scene(parent, 1000, 800);
         stage.setScene(scene);
         stage.show();
     }

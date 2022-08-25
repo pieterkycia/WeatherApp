@@ -44,7 +44,7 @@ public class MainWindowController extends BaseController {
     public void searchOnAction() {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
-//            viewManager.loadAlertsDataWindow();
+            viewManager.loadAlertsDataWindow();
 //            viewManager.loadCurrentDataWindow();
 //            viewManager.loadDailyDataWindow();
 //            viewManager.loadHourlyDataWindow();
