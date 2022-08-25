@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="TOP_CENTER">
+         <children>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" text="Prognoza" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshOnAction" text="Odśwież">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="cityNameTextField" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" promptText="Wyszukaj">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                        <Button alignment="TOP_RIGHT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchOnAction" text="Wyszukaj">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER">
+         <children>
+            <VBox fx:id="dataVBox">
+               <children>
+                  <VBox />
+                  <HBox />
+                  <VBox layoutX="10.0" layoutY="10.0" />
+                  <VBox layoutX="10.0" layoutY="10.0" />
+                  <VBox layoutX="10.0" layoutY="10.0" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
