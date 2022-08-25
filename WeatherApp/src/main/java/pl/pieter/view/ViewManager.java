@@ -1,7 +1,11 @@
 
 package pl.pieter.view;
 
+import javafx.scene.layout.VBox;
 import pl.pieter.WeatherManager;
+import pl.pieter.controller.BaseController;
+import pl.pieter.controller.MainWindowController;
+import pl.pieter.utils.FxmlUtils;
 
 public class ViewManager {
 
@@ -14,13 +18,20 @@ public class ViewManager {
     private static final int DAY_DETAILS_DATA_VBOX = 4;
 
     private WeatherManager weatherManager;
+    private MainWindowController mainWindowController;
 
     public ViewManager(WeatherManager weatherManager) {
         this.weatherManager = weatherManager;
+        this.mainWindowController = new MainWindowController(this, "/pl/pieter/fxml/MainWindow.fxml");
     }
 
     public WeatherManager getWeatherManager() {
         return weatherManager;
+    }
+
+    public VBox loadMainWindow() {
+        BaseController controller = this.mainWindowController;
+        return (VBox) FxmlUtils.loadFxmlFile(controller);
     }
 
 }
