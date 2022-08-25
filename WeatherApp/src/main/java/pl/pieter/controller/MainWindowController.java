@@ -76,6 +76,6 @@ public class MainWindowController extends BaseController {
 
     private void setEmptyWindow() {
         clearDataVBox();
-//        viewManager.loadEmptyWindow();
+        viewManager.loadEmptyWindow();
     }
 }
