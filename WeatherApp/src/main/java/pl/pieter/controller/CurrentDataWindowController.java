@@ -66,9 +66,9 @@ public class CurrentDataWindowController extends BaseController {
     }
 
     private String setIcon() {
-        String iconPath = "icon/01d.png";
+        String iconPath = "/pl/pieter/icon/empty.png";
         if (currentDataModelFx.hasIcon()) {
-            iconPath = "icon/" + currentDataModelFx.getIcon() + ".png";
+            iconPath = "/pl/pieter/icon/" + currentDataModelFx.getIcon() + ".png";
         }
         return iconPath;
     }

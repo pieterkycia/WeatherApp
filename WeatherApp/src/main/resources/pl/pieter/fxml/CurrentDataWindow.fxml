@@ -28,7 +28,7 @@
                      <children>
                         <ImageView fx:id="currentIconImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
-                              <Image url="@../../../../../../Users/pawlo/OneDrive/Pulpit/10d@2x.png" />
+                              <Image url="@../../../../../../../../../Users/pawlo/OneDrive/Pulpit/10d@2x.png" />
                            </image>
                         </ImageView>
                         <Label fx:id="currentTempLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" text="17" textFill="WHITE">

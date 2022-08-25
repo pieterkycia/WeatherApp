@@ -45,7 +45,7 @@ public class MainWindowController extends BaseController {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
             viewManager.loadAlertsDataWindow();
-//            viewManager.loadCurrentDataWindow();
+            viewManager.loadCurrentDataWindow();
 //            viewManager.loadDailyDataWindow();
 //            viewManager.loadHourlyDataWindow();
 //            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
