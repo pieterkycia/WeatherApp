@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vBoxData" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Szczegóły dnia" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <HBox spacing="20.0">
+         <children>
+            <FlowPane columnHalignment="CENTER" hgap="20.0" prefWrapLength="0.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label text="Temperatura maskymalna" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="maxTempLabel" text="04:26" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" text="Temperatura minimalna" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="minTempLabel" layoutX="10.0" layoutY="53.0" text="04:26" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label text="Wschód Słońca" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="sunriseLabel" text="04:26" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="11.0" text="Zachód Słońca" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="31.0">
+                           <children>
+                              <Label fx:id="sunsetLabel" text="20:34" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <Label text="Wschód Księżyca" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="moonriseLabel" text="02:01" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="11.0" text="Zachód Księżyca" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="31.0">
+                           <children>
+                              <Label fx:id="moonsetLabel" text="13:08" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label layoutX="10.0" layoutY="66.0" text="Faza Księżyca" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <ProgressIndicator fx:id="moonphaseProgressIndicator" progress="0.5" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="78.0" />
+                     </children>
+                  </VBox>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Opady" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="rainLabel" layoutX="10.0" layoutY="10.0" text="7%" textFill="WHITE">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Indeks UV" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="uvIndexLabel" layoutX="10.0" layoutY="30.0" text="5" textFill="WHITE">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Wilgotność" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="humidityLabel" layoutX="10.0" layoutY="10.0" text="40%" textFill="WHITE">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Wiatr" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="windSpeedLabel" layoutX="10.0" layoutY="30.0" text="12 km/h" textFill="WHITE">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets left="60.0" right="60.0" />
+   </padding>
+</VBox>

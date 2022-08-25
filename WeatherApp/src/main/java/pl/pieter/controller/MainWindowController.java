@@ -48,7 +48,7 @@ public class MainWindowController extends BaseController {
             viewManager.loadCurrentDataWindow();
             viewManager.loadDailyDataWindow();
             viewManager.loadHourlyDataWindow();
-//            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
+            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
 
         } catch (IOException e) {
             System.out.println("IOException");
