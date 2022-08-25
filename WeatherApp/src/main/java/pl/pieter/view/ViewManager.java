@@ -52,4 +52,9 @@ public class ViewManager {
         BaseController controller = new HourlyDataWindowController(this, "/pl/pieter/fxml/HourlyDataWindow.fxml");
         mainWindowController.setDataVBox(HOURLY_DATA_VBOX, controller);
     }
+
+    public void loadDayDetailsDataWindow(int index) {
+        BaseController controller = new DayDetailsDataWindowController(this, "/pl/pieter/fxml/DayDetailsDataWindow.fxml", index);
+        mainWindowController.setDataVBox(DAY_DETAILS_DATA_VBOX, controller);
+    }
 }

@@ -46,8 +46,8 @@ public class DailyDataWindowController extends BaseController {
     public void initialize() {
         setUpScrollPane();
         setUpDataHBox();
-        setStyle((VBox) dataHBox.getChildren().get(FIRST_ITEM));
-//        viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
+//        setStyle((VBox) dataHBox.getChildren().get(FIRST_ITEM));
+        viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
     }
 
     private void setUpScrollPane() {
