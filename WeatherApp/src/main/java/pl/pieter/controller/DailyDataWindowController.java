@@ -46,7 +46,7 @@ public class DailyDataWindowController extends BaseController {
     public void initialize() {
         setUpScrollPane();
         setUpDataHBox();
-//        setStyle((VBox) dataHBox.getChildren().get(FIRST_ITEM));
+        setStyle((VBox) dataHBox.getChildren().get(FIRST_ITEM));
         viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
     }
 
@@ -69,6 +69,14 @@ public class DailyDataWindowController extends BaseController {
         vBox.setId(String.valueOf(index));
         vBox.setPrefWidth(100);
         clearStyle(vBox);
+
+        vBox.setOnMouseClicked(mouseEvent -> {
+            dataHBox.getChildren().forEach(node -> {
+                clearStyle((VBox) node);
+            });
+            setStyle(vBox);
+            viewManager.loadDayDetailsDataWindow(index);
+        });
 
         vBox.getChildren().addAll(
                 createDtLabel(index),
