@@ -3,6 +3,7 @@ package pl.pieter.view;
 
 import javafx.scene.layout.VBox;
 import pl.pieter.WeatherManager;
+import pl.pieter.controller.AlertsDataWindowController;
 import pl.pieter.controller.BaseController;
 import pl.pieter.controller.MainWindowController;
 import pl.pieter.utils.FxmlUtils;
@@ -32,6 +33,11 @@ public class ViewManager {
     public VBox loadMainWindow() {
         BaseController controller = this.mainWindowController;
         return (VBox) FxmlUtils.loadFxmlFile(controller);
+    }
+
+    public void loadAlertsDataWindow() {
+        BaseController controller = new AlertsDataWindowController(this, "/pl/pieter/fxml/AlertsDataWindow.fxml");
+        mainWindowController.setDataVBox(ALERTS_DATA_VBOX, controller);
     }
 
 }
