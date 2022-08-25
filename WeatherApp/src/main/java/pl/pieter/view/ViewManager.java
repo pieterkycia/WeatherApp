@@ -57,4 +57,9 @@ public class ViewManager {
         BaseController controller = new DayDetailsDataWindowController(this, "/pl/pieter/fxml/DayDetailsDataWindow.fxml", index);
         mainWindowController.setDataVBox(DAY_DETAILS_DATA_VBOX, controller);
     }
+
+    public void loadEmptyWindow() {
+        BaseController controller = new EmptyWindowController(this, "/pl/pieter/fxml/EmptyWindow.fxml");
+        mainWindowController.setDataVBox(FIRST_ITEM, controller);
+    }
 }
