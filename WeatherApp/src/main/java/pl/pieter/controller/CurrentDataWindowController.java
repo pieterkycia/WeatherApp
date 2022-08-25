@@ -54,7 +54,7 @@ public class CurrentDataWindowController extends BaseController {
 
         this.currentIconImageView.setImage(new Image(setIcon()));
 
-        this.currentTempLabel.setText(String.valueOf(currentDataModelFx.getTemp()));
+        this.currentTempLabel.setText(String.valueOf(currentDataModelFx.getTemp() + " "));
         this.currentUnitLabel.setText(currentDataModelFx.getUnit());
         this.currentDescriptionLabel.setText(currentDataModelFx.getDescription());
         this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(currentDataModelFx.getFeelsLike()));

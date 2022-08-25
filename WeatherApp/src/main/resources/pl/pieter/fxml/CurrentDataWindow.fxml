@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -17,7 +15,7 @@
                <children>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <Label fx:id="currentCityNameLabel" alignment="TOP_CENTER" text="Rzeszów" textFill="WHITE">
+                        <Label fx:id="currentCityNameLabel" alignment="TOP_CENTER" textFill="WHITE">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -26,27 +24,13 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <ImageView fx:id="currentIconImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                           <image>
-                              <Image url="@../../../../../../../../../Users/pawlo/OneDrive/Pulpit/10d@2x.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="currentTempLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" text="17" textFill="WHITE">
+                        <ImageView fx:id="currentIconImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="currentTempLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" textFill="WHITE">
                            <font>
                               <Font size="50.0" />
                            </font>
-                           <graphic>
-                              <Label text="o" textFill="WHITE">
-                                 <padding>
-                                    <Insets bottom="25.0" />
-                                 </padding>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </graphic>
                         </Label>
-                        <Label fx:id="currentUnitLabel" text="C" textFill="WHITE">
+                        <Label fx:id="currentUnitLabel" textFill="WHITE">
                            <font>
                               <Font size="50.0" />
                            </font>
@@ -55,7 +39,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <Label fx:id="currentDescriptionLabel" alignment="TOP_CENTER" text="Słonecznie" textFill="WHITE">
+                        <Label fx:id="currentDescriptionLabel" alignment="TOP_CENTER" textFill="WHITE">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -64,17 +48,17 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" spacing="20.0">
                      <children>
-                        <Label fx:id="currentFeelsLikeLabel" text="Temperatura odczuwalna 19" textFill="WHITE">
+                        <Label fx:id="currentFeelsLikeLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentWindSpeedLabel" text="Wiatr 8 km/h" textFill="WHITE">
+                        <Label fx:id="currentWindSpeedLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentVisibilityLabel" text="Widocznosc 10 km" textFill="WHITE">
+                        <Label fx:id="currentVisibilityLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -83,17 +67,17 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" spacing="20.0">
                      <children>
-                        <Label fx:id="currentPressureLabel" text="Barometr 1017,00 mbar" textFill="WHITE">
+                        <Label fx:id="currentPressureLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentHumidityLabel" text="Wilgotnosc 43%" textFill="WHITE">
+                        <Label fx:id="currentHumidityLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentDewPointLabel" text="Temperatura punktu rosy 6" textFill="WHITE">
+                        <Label fx:id="currentDewPointLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
