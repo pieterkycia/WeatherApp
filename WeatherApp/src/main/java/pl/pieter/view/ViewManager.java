@@ -48,4 +48,8 @@ public class ViewManager {
         mainWindowController.setDataVBox(DAILY_DATA_VBOX, controller);
     }
 
+    public void loadHourlyDataWindow() {
+        BaseController controller = new HourlyDataWindowController(this, "/pl/pieter/fxml/HourlyDataWindow.fxml");
+        mainWindowController.setDataVBox(HOURLY_DATA_VBOX, controller);
+    }
 }

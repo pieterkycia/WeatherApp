@@ -47,7 +47,7 @@ public class MainWindowController extends BaseController {
             viewManager.loadAlertsDataWindow();
             viewManager.loadCurrentDataWindow();
             viewManager.loadDailyDataWindow();
-//            viewManager.loadHourlyDataWindow();
+            viewManager.loadHourlyDataWindow();
 //            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
 
         } catch (IOException e) {
