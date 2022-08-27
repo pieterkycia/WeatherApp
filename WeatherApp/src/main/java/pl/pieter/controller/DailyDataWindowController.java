@@ -102,7 +102,7 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private Label createTempMaxLabel(int index) {
-        Label label = new Label(String.valueOf(dailyDataModelFx.getTempDay(index)));
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index)) + " " + viewManager.getUnit()));
         label.setTextFill(Paint.valueOf("white"));
 
         return label;

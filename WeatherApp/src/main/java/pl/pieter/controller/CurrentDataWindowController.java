@@ -51,18 +51,15 @@ public class CurrentDataWindowController extends BaseController {
 
     public void initialize() {
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
-
         this.currentIconImageView.setImage(new Image(setIcon()));
-
-        this.currentTempLabel.setText(String.valueOf(currentDataModelFx.getTemp() + " "));
-        this.currentUnitLabel.setText(currentDataModelFx.getUnit());
+        this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " " + viewManager.getUnit()));
         this.currentDescriptionLabel.setText(currentDataModelFx.getDescription());
-        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(currentDataModelFx.getFeelsLike()));
-        this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(currentDataModelFx.getWindSpeed()) + " m/s");
+        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " " + viewManager.getUnit()));
+        this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(Math.round(currentDataModelFx.getWindSpeed())) + " m/s");
         this.currentVisibilityLabel.setText("Widoczność " + String.valueOf(currentDataModelFx.getVisibility()) + " m");
         this.currentPressureLabel.setText("Ciśnienie " + String.valueOf(currentDataModelFx.getPressure()) + " hPa");
         this.currentHumidityLabel.setText("Wilgotność " + String.valueOf(currentDataModelFx.getHumidity()) + " %");
-        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(currentDataModelFx.getDewPoint()));
+        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(Math.round(currentDataModelFx.getDewPoint()) + " " + viewManager.getUnit()));
     }
 
     private String setIcon() {

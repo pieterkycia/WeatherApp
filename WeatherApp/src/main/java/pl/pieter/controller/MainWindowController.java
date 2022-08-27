@@ -11,8 +11,6 @@ import java.io.IOException;
 
 public class MainWindowController extends BaseController {
 
-    private static final int FIRST_ITEM = 0;
-
     private static final int ALERTS_DATA_VBOX = 0;
     private static final int CURRENT_DATA_HBOX = 1;
     private static final int DAILY_DATA_VBOX = 2;
@@ -44,12 +42,8 @@ public class MainWindowController extends BaseController {
     public void searchOnAction() {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
-            viewManager.loadAlertsDataWindow();
-            viewManager.loadCurrentDataWindow();
-            viewManager.loadDailyDataWindow();
-            viewManager.loadHourlyDataWindow();
-            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
-
+//            viewManager.setUnit(WeatherClient.Unit.IMPERIAL);
+            loadAllData();
         } catch (IOException e) {
             System.out.println("IOException");
             setEmptyWindow();
@@ -60,6 +54,14 @@ public class MainWindowController extends BaseController {
             System.out.println("Exception");
             setEmptyWindow();
         }
+    }
+
+    private void loadAllData() {
+        viewManager.loadAlertsDataWindow();
+        viewManager.loadCurrentDataWindow();
+        viewManager.loadDailyDataWindow();
+        viewManager.loadHourlyDataWindow();
+        viewManager.loadDayDetailsDataWindow();
     }
 
     public void setDataVBox(int index, BaseController controller) {

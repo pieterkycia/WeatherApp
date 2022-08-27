@@ -17,6 +17,7 @@ public class DailyDataModelFx {
     public boolean hasDt(int index) {
         return getDt(index) != -1L;
     }
+
     public long getDt(int index) {
         return dailyData.getDayDataList().get(index).getDt();
     }
@@ -24,6 +25,7 @@ public class DailyDataModelFx {
     public boolean hasIcon(int index) {
         return !getIcon(index).contains("-1");
     }
+
     public String getIcon(int index) {
         return dailyData.getDayDataList().get(index).getWeather().getIcon();
     }
@@ -31,6 +33,7 @@ public class DailyDataModelFx {
     public boolean hasTempMax(int index) {
         return getTempMax(index) != -1.0f;
     }
+
     public float getTempMax(int index) {
         return dailyData.getDayDataList().get(index).getTemp().getMax();
     }
@@ -38,6 +41,7 @@ public class DailyDataModelFx {
     public boolean hasTempDay(int index) {
         return getTempDay(index) != -1.0f;
     }
+
     public float getTempDay(int index) {
         return dailyData.getDayDataList().get(index).getTemp().getDay();
     }
@@ -45,6 +49,7 @@ public class DailyDataModelFx {
     public boolean hasDescription(int index) {
         return !getDescription(index).contains("-1");
     }
+
     public String getDescription(int index) {
         return dailyData.getDayDataList().get(index).getWeather().getDescription();
     }
