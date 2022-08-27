@@ -51,7 +51,8 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private void setUpScrollPane() {
-        scrollPane.setMaxWidth(813.6);
+        scrollPane.setMaxWidth(815);
+//        scrollPane.setMaxWidth(813.6);
         scrollPane.setMinWidth(104);
     }
 
@@ -102,7 +103,8 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private Label createTempMaxLabel(int index) {
-        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index)) + " " + viewManager.getUnit()));
+        char degreeSign = 176;
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index)) + " " + degreeSign + viewManager.getUnit()));
         label.setTextFill(Paint.valueOf("white"));
 
         return label;

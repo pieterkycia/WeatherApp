@@ -6,6 +6,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import pl.pieter.utils.FxmlUtils;
 import pl.pieter.view.ViewManager;
+import pl.pieter.weather.library.WeatherClient;
 
 import java.io.IOException;
 
@@ -42,7 +43,6 @@ public class MainWindowController extends BaseController {
     public void searchOnAction() {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
-//            viewManager.setUnit(WeatherClient.Unit.IMPERIAL);
             loadAllData();
         } catch (IOException e) {
             System.out.println("IOException");

@@ -58,11 +58,12 @@ public class DayDetailsDataWindowController extends BaseController {
 
     @FXML
     public void initialize() {
+        char degreeSign = 176;
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
-        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + viewManager.getUnit()));
-        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + viewManager.getUnit()));
+        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit()));
+        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit()));
 
 
         sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
