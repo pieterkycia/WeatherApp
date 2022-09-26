@@ -1,6 +1,7 @@
 package pl.pieter.controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -51,9 +52,8 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private void setUpScrollPane() {
-        scrollPane.setMaxWidth(815);
-//        scrollPane.setMaxWidth(813.6);
-        scrollPane.setMinWidth(104);
+        scrollPane.setMaxWidth(802);
+        scrollPane.setMinWidth(100);
     }
 
     private void setUpDataHBox() {
@@ -69,6 +69,7 @@ public class DailyDataWindowController extends BaseController {
         VBox vBox = new VBox();
         vBox.setId(String.valueOf(index));
         vBox.setPrefWidth(100);
+        vBox.setPadding(new Insets(10));
         clearStyle(vBox);
 
         vBox.setOnMouseClicked(mouseEvent -> {
