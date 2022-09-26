@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import pl.pieter.model.HourlyDataModelFx;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.view.ViewManager;
@@ -67,7 +68,8 @@ public class HourlyDataWindowController extends BaseController {
     private Label createDtLabel(int index) {
         String dateString = DateUtils.getHour(hourlyDataModelFx.getDt(index));
         Label label = new Label(dateString);
-        label.setTextFill(Paint.valueOf("white"));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
+        label.setFont(Font.font(15));
 
         return label;
     }
@@ -79,16 +81,16 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private Label createTempMaxLabel(int index) {
-        char degreeSign = 176;
-        Label label = new Label(String.valueOf(Math.round(hourlyDataModelFx.getTempMax(index)) + " " + degreeSign + viewManager.getUnit()));
-        label.setTextFill(Paint.valueOf("white"));
+        Label label = new Label(String.valueOf(Math.round(hourlyDataModelFx.getTempMax(index))) + " \u00B0C");
+        label.setTextFill(Paint.valueOf("FFFFFF"));
+        label.setFont(Font.font(20));
 
         return label;
     }
 
     private Label createDescriptionLabel(int index) {
         Label label = new Label(hourlyDataModelFx.getDescription(index));
-        label.setTextFill(Paint.valueOf("white"));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
 
         return label;

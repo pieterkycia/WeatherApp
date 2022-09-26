@@ -123,7 +123,8 @@ public class DailyDataWindowController extends BaseController {
     private Label createDtLabel(int index) {
         String dateString = DateUtils.getDayName(dailyDataModelFx.getDt(index));
         Label label = new Label(dateString);
-        label.setTextFill(Paint.valueOf("white"));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
+        label.setFont(Font.font(15));
 
         return label;
     }
@@ -136,7 +137,7 @@ public class DailyDataWindowController extends BaseController {
 
     private Label createDescriptionLabel(int index) {
         Label label = new Label(dailyDataModelFx.getDescription(index));
-        label.setTextFill(Paint.valueOf("white"));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
 
         return label;
