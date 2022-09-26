@@ -63,3 +63,16 @@
 -fx-cursor: hand;
 -fx-fill: white;
 }
+
+.topBarButtons {
+-fx-background-color: transparent;
+}
+
+.topBarButtons:hover {
+-fx-cursor: hand;
+-fx-background-color: #4B5BF2;
+}
+
+.topBarIcons {
+-fx-fill: white;
+}

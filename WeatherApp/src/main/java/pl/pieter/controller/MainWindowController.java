@@ -1,10 +1,14 @@
 package pl.pieter.controller;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import pl.pieter.utils.FxmlUtils;
 import pl.pieter.view.ViewManager;
 
@@ -36,6 +40,8 @@ public class MainWindowController extends BaseController {
 
     @FXML
     public void initialize() {
+        setUpRefreshButton();
+        setUpSearchButton();
         cityNameTextField.setText("korytniki");
         searchOnAction();
     }
@@ -85,5 +91,25 @@ public class MainWindowController extends BaseController {
     private void setEmptyWindow() {
         clearDataVBox();
         viewManager.loadEmptyWindow();
+    }
+
+    private void setUpRefreshButton() {
+        Text refreshButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.REFRESH, "30px");
+        refreshButtonIcon.getStyleClass().add("topBarIcons");
+
+        refreshButton.getStyleClass().add("topBarButtons");
+        refreshButton.setGraphic(refreshButtonIcon);
+        refreshButton.setAlignment(Pos.CENTER);
+        refreshButton.setPrefHeight(36.8);
+    }
+
+    private void setUpSearchButton() {
+        Text searchButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.SEARCH, "30px");
+        searchButtonIcon.getStyleClass().add("topBarIcons");
+
+        searchButton.getStyleClass().add("topBarButtons");
+        searchButton.setGraphic(searchButtonIcon);
+        searchButton.setAlignment(Pos.CENTER);
+        searchButton.setPrefHeight(36.8);
     }
 }
