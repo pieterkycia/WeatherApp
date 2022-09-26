@@ -55,6 +55,7 @@ public class HourlyDataWindowController extends BaseController {
         vBox.setId(String.valueOf(index));
         vBox.setPrefWidth(100);
         vBox.setPadding(new Insets(10));
+        vBox.getStyleClass().add("clearVbox");
 
         vBox.getChildren().addAll(
                 createDtLabel(index),
