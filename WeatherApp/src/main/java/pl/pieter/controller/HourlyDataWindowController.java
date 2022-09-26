@@ -127,6 +127,7 @@ public class HourlyDataWindowController extends BaseController {
 
     private void setUpNextButton() {
         Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_RIGHT, "30px");
+        nextButtonIcon.getStyleClass().add("hourlyWindowIcons");
 
         nextButton.setGraphic(nextButtonIcon);
         nextButton.setAlignment(Pos.CENTER);
@@ -135,6 +136,7 @@ public class HourlyDataWindowController extends BaseController {
 
     private void setUpPrevButton() {
         Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_LEFT, "30px");
+        prevButtonIcon.getStyleClass().add("hourlyWindowIcons");
 
         prevButton.setGraphic(prevButtonIcon);
         prevButton.setAlignment(Pos.CENTER);

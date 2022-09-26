@@ -29,3 +29,11 @@
 -fx-border-radius: 5px;
 -fx-cursor: hand;
 }
+
+.dailyWindowIcons {
+-fx-fill: #FFFFFF;
+}
+
+.hourlyWindowIcons {
+-fx-fill: #FFFFFF;
+}
