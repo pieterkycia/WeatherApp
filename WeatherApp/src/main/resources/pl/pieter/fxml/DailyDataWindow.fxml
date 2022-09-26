@@ -28,7 +28,7 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#prevButtonOnAction" text="prev" />
+                  <Button fx:id="prevButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#prevButtonOnAction" text="prev" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
@@ -45,7 +45,7 @@
             </ScrollPane>
             <VBox alignment="CENTER">
                <children>
-                  <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#nextButtonOnAction" text="next" />
+                  <Button fx:id="nextButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextButtonOnAction" text="next" />
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />
