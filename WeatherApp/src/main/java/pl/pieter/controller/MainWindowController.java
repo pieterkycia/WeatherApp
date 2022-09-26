@@ -1,12 +1,12 @@
 package pl.pieter.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import pl.pieter.utils.FxmlUtils;
 import pl.pieter.view.ViewManager;
-import pl.pieter.weather.library.WeatherClient;
 
 import java.io.IOException;
 
@@ -23,6 +23,12 @@ public class MainWindowController extends BaseController {
 
     @FXML
     private VBox dataVBox;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private Button refreshButton;
 
     public MainWindowController(ViewManager viewManager, String fxmlPath) {
         super(viewManager, fxmlPath);
