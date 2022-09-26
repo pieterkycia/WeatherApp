@@ -19,6 +19,7 @@ public class Main extends Application {
 
         WeatherManager weatherManager = new WeatherManager();
         VBox parent = weatherManager.getViewManager().loadMainWindow();
+        parent.getStylesheets().add(getClass().getResource("/pl/pieter/css/main.css").toExternalForm());
 
         Scene scene = new Scene(parent, 1000, 800);
         stage.setScene(scene);
