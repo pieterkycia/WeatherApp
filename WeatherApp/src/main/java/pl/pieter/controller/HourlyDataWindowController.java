@@ -77,7 +77,8 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private Label createTempMaxLabel(int index) {
-        Label label = new Label(String.valueOf(hourlyDataModelFx.getTempMax(index)));
+        char degreeSign = 176;
+        Label label = new Label(String.valueOf(Math.round(hourlyDataModelFx.getTempMax(index)) + " " + degreeSign + viewManager.getUnit()));
         label.setTextFill(Paint.valueOf("white"));
 
         return label;

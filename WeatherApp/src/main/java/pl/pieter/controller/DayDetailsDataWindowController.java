@@ -58,11 +58,12 @@ public class DayDetailsDataWindowController extends BaseController {
 
     @FXML
     public void initialize() {
+        char degreeSign = 176;
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
-        maxTempLabel.setText(String.valueOf(dayData.getTemp().getMax()) + " C");
-        minTempLabel.setText(String.valueOf(dayData.getTemp().getMin()) + " C");
+        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit()));
+        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit()));
 
 
         sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
@@ -72,12 +73,12 @@ public class DayDetailsDataWindowController extends BaseController {
         moonsetLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonset() * 1000)));
         moonphaseProgressIndicator.setProgress(dayData.getMoonPhase());
 
-        rainLabel.setText(String.valueOf(dayData.getPop() * 100) + " %");
+        rainLabel.setText(String.valueOf(Math.round(dayData.getPop() * 100)) + " %");
 
-        uvIndexLabel.setText(String.valueOf(dayData.getUvi()));
+        uvIndexLabel.setText(String.valueOf(Math.round(dayData.getUvi())));
 
         humidityLabel.setText(String.valueOf(dayData.getHumidity()) + " %");
 
-        windSpeedLabel.setText(String.valueOf(dayData.getWindSpeed()) + " m/s");
+        windSpeedLabel.setText(String.valueOf(Math.round(dayData.getWindSpeed()) + " m/s"));
     }
 }

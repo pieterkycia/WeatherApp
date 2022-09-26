@@ -6,12 +6,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import pl.pieter.utils.FxmlUtils;
 import pl.pieter.view.ViewManager;
+import pl.pieter.weather.library.WeatherClient;
 
 import java.io.IOException;
 
 public class MainWindowController extends BaseController {
-
-    private static final int FIRST_ITEM = 0;
 
     private static final int ALERTS_DATA_VBOX = 0;
     private static final int CURRENT_DATA_HBOX = 1;
@@ -44,12 +43,7 @@ public class MainWindowController extends BaseController {
     public void searchOnAction() {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
-            viewManager.loadAlertsDataWindow();
-            viewManager.loadCurrentDataWindow();
-            viewManager.loadDailyDataWindow();
-            viewManager.loadHourlyDataWindow();
-            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
-
+            loadAllData();
         } catch (IOException e) {
             System.out.println("IOException");
             setEmptyWindow();
@@ -60,6 +54,14 @@ public class MainWindowController extends BaseController {
             System.out.println("Exception");
             setEmptyWindow();
         }
+    }
+
+    private void loadAllData() {
+        viewManager.loadAlertsDataWindow();
+        viewManager.loadCurrentDataWindow();
+        viewManager.loadDailyDataWindow();
+        viewManager.loadHourlyDataWindow();
+        viewManager.loadDayDetailsDataWindow();
     }
 
     public void setDataVBox(int index, BaseController controller) {

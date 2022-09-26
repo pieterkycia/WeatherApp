@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import pl.pieter.weather.library.WeatherClient;
 
 import java.io.IOException;
 
@@ -14,7 +15,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, InterruptedException {
 
         WeatherManager weatherManager = new WeatherManager();
         VBox parent = weatherManager.getViewManager().loadMainWindow();

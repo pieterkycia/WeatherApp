@@ -5,11 +5,11 @@ import javafx.scene.layout.VBox;
 import pl.pieter.WeatherManager;
 import pl.pieter.controller.*;
 import pl.pieter.utils.FxmlUtils;
+import pl.pieter.weather.library.WeatherClient;
 
 public class ViewManager {
 
     private static final int FIRST_ITEM = 0;
-
     private static final int ALERTS_DATA_VBOX = 0;
     private static final int CURRENT_DATA_HBOX = 1;
     private static final int DAILY_DATA_VBOX = 2;
@@ -53,6 +53,10 @@ public class ViewManager {
         mainWindowController.setDataVBox(HOURLY_DATA_VBOX, controller);
     }
 
+    public void loadDayDetailsDataWindow() {
+        loadDayDetailsDataWindow(FIRST_ITEM);
+    }
+
     public void loadDayDetailsDataWindow(int index) {
         BaseController controller = new DayDetailsDataWindowController(this, "/pl/pieter/fxml/DayDetailsDataWindow.fxml", index);
         mainWindowController.setDataVBox(DAY_DETAILS_DATA_VBOX, controller);
@@ -61,5 +65,13 @@ public class ViewManager {
     public void loadEmptyWindow() {
         BaseController controller = new EmptyWindowController(this, "/pl/pieter/fxml/EmptyWindow.fxml");
         mainWindowController.setDataVBox(FIRST_ITEM, controller);
+    }
+
+    public void setUnit(WeatherClient.Unit unit) {
+        this.weatherManager.getWeatherDataModelFx().getWeatherClient().setUnit(unit);
+    }
+
+    public String getUnit() {
+        return this.weatherManager.getWeatherDataModelFx().getWeatherClient().getUnit().getShortName();
     }
 }

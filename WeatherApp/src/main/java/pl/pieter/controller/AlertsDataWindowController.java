@@ -39,7 +39,7 @@ public class AlertsDataWindowController extends BaseController {
 
             for (int j = 0; j < alertsDataModelFx.getTags(i).size(); j++) {
                 Label label = new Label(alertsDataModelFx.getTags(i).get(j));
-                label.setTextFill(Paint.valueOf("white"));
+                label.setTextFill(Paint.valueOf("#ffffff"));
                 label.setFont(new Font("system", 30));
                 vBox.getChildren().add(label);
             }
@@ -51,13 +51,14 @@ public class AlertsDataWindowController extends BaseController {
 
     private void setDataVBoxBackground(Node node, String event) {
         if (event.toLowerCase().contains("red")) {
-            node.setStyle("-fx-background-color: red");
+            node.setStyle("-fx-background-color: #e60000");
         } else if (event.toLowerCase().contains("yellow")) {
-            node.setStyle("-fx-background-color: yellow");
+            node.setStyle("-fx-background-color: #e6e600");
         } else if (event.toLowerCase().contains("orange")) {
-            node.setStyle("-fx-background-color: orange");
+            node.setStyle("-fx-background-color: #e68a00");
         } else {
-            node.setStyle("-fx-background-color: green");
+            // green color
+            node.setStyle("-fx-background-color: #39e600");
         }
     }
 }
