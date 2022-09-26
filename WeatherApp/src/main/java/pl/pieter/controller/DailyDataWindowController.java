@@ -1,16 +1,21 @@
 package pl.pieter.controller;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import pl.pieter.model.DailyDataModelFx;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.view.ViewManager;
@@ -55,6 +60,9 @@ public class DailyDataWindowController extends BaseController {
     public void initialize() {
         setUpScrollPane();
         setUpDataHBox();
+        setUpPrevButton();
+        setUpNextButton();
+
         if (dataHBox.getChildren().size() > 0) {
             (dataHBox.getChildren().get(FIRST_ITEM)).getStyleClass().set(0, "clickedVbox");
             viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
@@ -152,16 +160,20 @@ public class DailyDataWindowController extends BaseController {
         return label;
     }
 
-    private void clearStyle(VBox vBox) {
-        vBox.setBorder(new Border(new BorderStroke(Color.TRANSPARENT,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        vBox.setOpacity(1);
+    private void setUpNextButton() {
+        Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_RIGHT, "30px");
+
+        nextButton.setGraphic(nextButtonIcon);
+        nextButton.setAlignment(Pos.CENTER);
+        nextButton.setPrefHeight(36.8);
     }
 
-    private void setStyle(VBox vBox) {
-        vBox.setBorder(new Border(new BorderStroke(Color.WHITE,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        vBox.setOpacity(0.8);
+    private void setUpPrevButton() {
+        Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_LEFT, "30px");
+
+        prevButton.setGraphic(prevButtonIcon);
+        prevButton.setAlignment(Pos.CENTER);
+        prevButton.setPrefHeight(36.8);
     }
 
     private String setIcon(int index) {
