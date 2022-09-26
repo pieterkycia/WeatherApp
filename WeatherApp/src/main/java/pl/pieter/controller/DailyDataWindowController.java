@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import pl.pieter.model.DailyDataModelFx;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.view.ViewManager;
@@ -83,10 +84,40 @@ public class DailyDataWindowController extends BaseController {
         vBox.getChildren().addAll(
                 createDtLabel(index),
                 createIconImageView(index),
-                createTempMaxLabel(index),
+                createHboxWithTempsValue(index),
                 createDescriptionLabel(index)
         );
         return vBox;
+    }
+
+    private HBox createHboxWithTempsValue(int index) {
+        HBox hBox = new HBox();
+        Label label = new Label("/");
+        label.setFont(Font.font(30));
+
+        hBox.getChildren().addAll(
+                createTempDayLabel(index),
+                label,
+                createTempNightLabel(index));
+        return hBox;
+    }
+
+    private Label createTempDayLabel(int index) {
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index))));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
+        label.setFont(Font.font(20));
+        label.setPadding(new Insets(5, 0, 0, 0));
+
+        return label;
+    }
+
+    private Label createTempNightLabel(int index) {
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempNight(index))));
+        label.setTextFill(Paint.valueOf("#AAAAAA"));
+        label.setFont(Font.font(15));
+        label.setPadding(new Insets(15, 0, 0, 0));
+
+        return label;
     }
 
     private Label createDtLabel(int index) {
@@ -101,14 +132,6 @@ public class DailyDataWindowController extends BaseController {
         ImageView imageView = new ImageView(new Image(setIcon(index)));
 
         return imageView;
-    }
-
-    private Label createTempMaxLabel(int index) {
-        char degreeSign = 176;
-        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index)) + " " + degreeSign + viewManager.getUnit()));
-        label.setTextFill(Paint.valueOf("white"));
-
-        return label;
     }
 
     private Label createDescriptionLabel(int index) {
