@@ -164,6 +164,7 @@ public class DailyDataWindowController extends BaseController {
         Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_RIGHT, "30px");
         nextButtonIcon.getStyleClass().add("dailyWindowIcons");
 
+        nextButton.getStyleClass().add("dailyWindowButtons");
         nextButton.setGraphic(nextButtonIcon);
         nextButton.setAlignment(Pos.CENTER);
         nextButton.setPrefHeight(36.8);
@@ -173,6 +174,7 @@ public class DailyDataWindowController extends BaseController {
         Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_LEFT, "30px");
         prevButtonIcon.getStyleClass().add("dailyWindowIcons");
 
+        prevButton.getStyleClass().add("dailyWindowButtons");
         prevButton.setGraphic(prevButtonIcon);
         prevButton.setAlignment(Pos.CENTER);
         prevButton.setPrefHeight(36.8);

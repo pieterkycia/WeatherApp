@@ -31,9 +31,35 @@
 }
 
 .dailyWindowIcons {
--fx-fill: #FFFFFF;
+-fx-fill: #6D7DF4;
+}
+
+.dailyWindowButtons {
+-fx-background-color: transparent;
+}
+
+.dailyWindowButtons:hover {
+-fx-cursor: hand;
+}
+
+.dailyWindowButtons:hover > .dailyWindowIcons{
+-fx-cursor: hand;
+-fx-fill: white;
 }
 
 .hourlyWindowIcons {
--fx-fill: #FFFFFF;
+-fx-fill: #6D7DF4;
+}
+
+.hourlyWindowButtons {
+-fx-background-color: transparent;
+}
+
+.hourlyWindowButtons:hover {
+-fx-cursor: hand;
+}
+
+.hourlyWindowButtons:hover > .hourlyWindowIcons{
+-fx-cursor: hand;
+-fx-fill: white;
 }
