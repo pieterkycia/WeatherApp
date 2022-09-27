@@ -22,7 +22,7 @@
                <children>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;">
+                        <Separator>
                            <VBox.margin>
                               <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
@@ -51,7 +51,7 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
@@ -88,7 +88,7 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
@@ -132,7 +132,7 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>

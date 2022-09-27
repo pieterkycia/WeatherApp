@@ -80,3 +80,9 @@
 .topBar {
 -fx-background-color: #002C88;
 }
+
+.separator *.line {
+    -fx-border-style: solid;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 0 0 1 0;
+}
