@@ -76,3 +76,7 @@
 .topBarIcons {
 -fx-fill: white;
 }
+
+.topBar {
+-fx-background-color: #002C88;
+}

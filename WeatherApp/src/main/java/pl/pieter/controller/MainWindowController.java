@@ -29,6 +29,9 @@ public class MainWindowController extends BaseController {
     private VBox dataVBox;
 
     @FXML
+    private HBox topBarHBox;
+
+    @FXML
     private Button searchButton;
 
     @FXML
@@ -42,8 +45,14 @@ public class MainWindowController extends BaseController {
     public void initialize() {
         setUpRefreshButton();
         setUpSearchButton();
+        setUpTopBarHBox();
+
         cityNameTextField.setText("korytniki");
         searchOnAction();
+    }
+
+    private void setUpTopBarHBox() {
+        topBarHBox.getStyleClass().add("topBar");
     }
 
     @FXML
