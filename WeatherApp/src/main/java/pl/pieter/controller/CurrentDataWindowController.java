@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.pieter.model.CurrentDataModelFx;
+import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
 
 public class CurrentDataWindowController extends BaseController {
