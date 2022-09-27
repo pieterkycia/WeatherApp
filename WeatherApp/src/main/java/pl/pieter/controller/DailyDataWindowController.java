@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import pl.pieter.model.DailyDataModelFx;
 import pl.pieter.utils.DateUtils;
+import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
 
 public class DailyDataWindowController extends BaseController {
@@ -153,7 +154,7 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private Label createDescriptionLabel(int index) {
-        Label label = new Label(dailyDataModelFx.getDescription(index));
+        Label label = new Label(StringUtils.capitalize(dailyDataModelFx.getDescription(index)));
         label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
 

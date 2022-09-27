@@ -18,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import pl.pieter.model.HourlyDataModelFx;
 import pl.pieter.utils.DateUtils;
+import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
 
 public class HourlyDataWindowController extends BaseController {
@@ -103,7 +104,7 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private Label createDescriptionLabel(int index) {
-        Label label = new Label(hourlyDataModelFx.getDescription(index));
+        Label label = new Label(StringUtils.capitalize(hourlyDataModelFx.getDescription(index)));
         label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
 

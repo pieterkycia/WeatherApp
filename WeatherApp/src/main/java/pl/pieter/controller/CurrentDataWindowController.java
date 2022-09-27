@@ -54,7 +54,7 @@ public class CurrentDataWindowController extends BaseController {
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
         this.currentIconImageView.setImage(new Image(setIcon()));
         this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " \u00B0" + viewManager.getUnit()));
-        this.currentDescriptionLabel.setText(currentDataModelFx.getDescription());
+        this.currentDescriptionLabel.setText(StringUtils.capitalize(currentDataModelFx.getDescription()));
         this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " \u00B0" + viewManager.getUnit()));
         this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(Math.round(currentDataModelFx.getWindSpeed())) + " m/s");
         this.currentVisibilityLabel.setText("Widoczność " + String.valueOf(currentDataModelFx.getVisibility()) + " m");
