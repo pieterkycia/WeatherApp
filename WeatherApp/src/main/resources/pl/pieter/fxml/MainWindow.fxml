@@ -9,7 +9,7 @@
 
 <VBox style="-fx-background-color: #003d99;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="TOP_CENTER">
+      <HBox fx:id="topBarHBox" alignment="TOP_CENTER">
          <children>
             <VBox HBox.hgrow="ALWAYS">
                <children>
@@ -24,7 +24,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshOnAction" text="Odśwież">
+                        <Button fx:id="refreshButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshOnAction">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -34,7 +34,7 @@
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <Button alignment="TOP_RIGHT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchOnAction" text="Wyszukaj">
+                        <Button fx:id="searchButton" alignment="TOP_RIGHT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#searchOnAction">
                            <font>
                               <Font size="16.0" />
                            </font>

@@ -46,6 +46,14 @@ public class DailyDataModelFx {
         return dailyData.getDayDataList().get(index).getTemp().getDay();
     }
 
+    public boolean hasTempNight(int index) {
+        return getTempNight(index) != -1.0f;
+    }
+
+    public float getTempNight(int index) {
+        return dailyData.getDayDataList().get(index).getTemp().getNight();
+    }
+
     public boolean hasDescription(int index) {
         return !getDescription(index).contains("-1");
     }

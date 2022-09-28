@@ -1,15 +1,24 @@
 package pl.pieter.controller;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import pl.pieter.model.DailyDataModelFx;
 import pl.pieter.utils.DateUtils;
+import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
 
 public class DailyDataWindowController extends BaseController {
@@ -32,6 +41,12 @@ public class DailyDataWindowController extends BaseController {
     private ScrollPane scrollPane;
 
     @FXML
+    private Button prevButton;
+
+    @FXML
+    private Button nextButton;
+
+    @FXML
     void nextButtonOnAction() {
         double scrollHValue = 100 / (dataPane.getWidth() - scrollPane.getWidth());
         scrollPane.setHvalue(scrollPane.getHvalue() + scrollHValue);
@@ -46,14 +61,18 @@ public class DailyDataWindowController extends BaseController {
     public void initialize() {
         setUpScrollPane();
         setUpDataHBox();
-        setStyle((VBox) dataHBox.getChildren().get(FIRST_ITEM));
-        viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
+        setUpPrevButton();
+        setUpNextButton();
+
+        if (dataHBox.getChildren().size() > 0) {
+            (dataHBox.getChildren().get(FIRST_ITEM)).getStyleClass().set(0, "clickedVbox");
+            viewManager.loadDayDetailsDataWindow(FIRST_ITEM);
+        }
     }
 
     private void setUpScrollPane() {
-        scrollPane.setMaxWidth(815);
-//        scrollPane.setMaxWidth(813.6);
-        scrollPane.setMinWidth(104);
+        scrollPane.setMaxWidth(802);
+        scrollPane.setMinWidth(100);
     }
 
     private void setUpDataHBox() {
@@ -69,29 +88,61 @@ public class DailyDataWindowController extends BaseController {
         VBox vBox = new VBox();
         vBox.setId(String.valueOf(index));
         vBox.setPrefWidth(100);
-        clearStyle(vBox);
+        vBox.setPadding(new Insets(10));
+        vBox.getStyleClass().add("clearVbox");
 
         vBox.setOnMouseClicked(mouseEvent -> {
             dataHBox.getChildren().forEach(node -> {
-                clearStyle((VBox) node);
+                node.getStyleClass().set(0, "clearVbox");
             });
-            setStyle(vBox);
+            vBox.getStyleClass().set(0, "clickedVbox");
             viewManager.loadDayDetailsDataWindow(index);
         });
 
         vBox.getChildren().addAll(
                 createDtLabel(index),
                 createIconImageView(index),
-                createTempMaxLabel(index),
+                createHboxWithTempsValue(index),
                 createDescriptionLabel(index)
         );
         return vBox;
     }
 
+    private HBox createHboxWithTempsValue(int index) {
+        HBox hBox = new HBox();
+        Label label = new Label("/");
+        label.setFont(Font.font(30));
+
+        hBox.getChildren().addAll(
+                createTempDayLabel(index),
+                label,
+                createTempNightLabel(index));
+        return hBox;
+    }
+
+    private Label createTempDayLabel(int index) {
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index))));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
+        label.setFont(Font.font(20));
+        label.setPadding(new Insets(5, 0, 0, 0));
+
+        return label;
+    }
+
+    private Label createTempNightLabel(int index) {
+        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempNight(index))));
+        label.setTextFill(Paint.valueOf("#AAAAAA"));
+        label.setFont(Font.font(15));
+        label.setPadding(new Insets(15, 0, 0, 0));
+
+        return label;
+    }
+
     private Label createDtLabel(int index) {
         String dateString = DateUtils.getDayName(dailyDataModelFx.getDt(index));
         Label label = new Label(dateString);
-        label.setTextFill(Paint.valueOf("white"));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
+        label.setFont(Font.font(15));
 
         return label;
     }
@@ -102,32 +153,32 @@ public class DailyDataWindowController extends BaseController {
         return imageView;
     }
 
-    private Label createTempMaxLabel(int index) {
-        char degreeSign = 176;
-        Label label = new Label(String.valueOf(Math.round(dailyDataModelFx.getTempDay(index)) + " " + degreeSign + viewManager.getUnit()));
-        label.setTextFill(Paint.valueOf("white"));
-
-        return label;
-    }
-
     private Label createDescriptionLabel(int index) {
-        Label label = new Label(dailyDataModelFx.getDescription(index));
-        label.setTextFill(Paint.valueOf("white"));
+        Label label = new Label(StringUtils.capitalize(dailyDataModelFx.getDescription(index)));
+        label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
 
         return label;
     }
 
-    private void clearStyle(VBox vBox) {
-        vBox.setBorder(new Border(new BorderStroke(Color.TRANSPARENT,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        vBox.setOpacity(1);
+    private void setUpNextButton() {
+        Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_RIGHT, "30px");
+        nextButtonIcon.getStyleClass().add("dailyWindowIcons");
+
+        nextButton.getStyleClass().add("dailyWindowButtons");
+        nextButton.setGraphic(nextButtonIcon);
+        nextButton.setAlignment(Pos.CENTER);
+        nextButton.setPrefHeight(36.8);
     }
 
-    private void setStyle(VBox vBox) {
-        vBox.setBorder(new Border(new BorderStroke(Color.WHITE,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        vBox.setOpacity(0.8);
+    private void setUpPrevButton() {
+        Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_LEFT, "30px");
+        prevButtonIcon.getStyleClass().add("dailyWindowIcons");
+
+        prevButton.getStyleClass().add("dailyWindowButtons");
+        prevButton.setGraphic(prevButtonIcon);
+        prevButton.setAlignment(Pos.CENTER);
+        prevButton.setPrefHeight(36.8);
     }
 
     private String setIcon(int index) {

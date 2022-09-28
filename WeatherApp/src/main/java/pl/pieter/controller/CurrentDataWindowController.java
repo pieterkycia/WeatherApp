@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pl.pieter.model.CurrentDataModelFx;
+import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
 
 public class CurrentDataWindowController extends BaseController {
@@ -50,17 +51,16 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentWindSpeedLabel;
 
     public void initialize() {
-        char degreeSign = 176;
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
         this.currentIconImageView.setImage(new Image(setIcon()));
-        this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " " + degreeSign + viewManager.getUnit()));
-        this.currentDescriptionLabel.setText(currentDataModelFx.getDescription());
-        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " " + degreeSign + viewManager.getUnit()));
+        this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " \u00B0" + viewManager.getUnit()));
+        this.currentDescriptionLabel.setText(StringUtils.capitalize(currentDataModelFx.getDescription()));
+        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " \u00B0" + viewManager.getUnit()));
         this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(Math.round(currentDataModelFx.getWindSpeed())) + " m/s");
         this.currentVisibilityLabel.setText("Widoczność " + String.valueOf(currentDataModelFx.getVisibility()) + " m");
         this.currentPressureLabel.setText("Ciśnienie " + String.valueOf(currentDataModelFx.getPressure()) + " hPa");
         this.currentHumidityLabel.setText("Wilgotność " + String.valueOf(currentDataModelFx.getHumidity()) + " %");
-        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(Math.round(currentDataModelFx.getDewPoint()) + " " + degreeSign + viewManager.getUnit()));
+        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(Math.round(currentDataModelFx.getDewPoint()) + " \u00B0" + viewManager.getUnit()));
     }
 
     private String setIcon() {

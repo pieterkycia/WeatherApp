@@ -16,15 +16,15 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <HBox spacing="20.0">
+      <HBox>
          <children>
             <FlowPane columnHalignment="CENTER" hgap="20.0" prefWrapLength="0.0" HBox.hgrow="ALWAYS">
                <children>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;">
+                        <Separator>
                            <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
+                              <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
                         <Label text="Temperatura maskymalna" textFill="WHITE">
@@ -51,9 +51,9 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
+                              <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
                         <Label text="Wschód Słońca" textFill="WHITE">
@@ -88,9 +88,9 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
+                              <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
                         <Label text="Wschód Księżyca" textFill="WHITE">
@@ -132,9 +132,9 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <Separator maxHeight="0.5" minHeight="0.5" prefHeight="0.5" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+                        <Separator VBox.vgrow="ALWAYS">
                            <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
+                              <Insets bottom="10.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
