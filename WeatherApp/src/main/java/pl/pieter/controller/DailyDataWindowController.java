@@ -3,6 +3,8 @@ package pl.pieter.controller;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import javafx.animation.Animation;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -55,6 +57,9 @@ public class DailyDataWindowController extends BaseController {
 
         Animation scrollAnimation = AnimationUtils.scrollNextAnimation(scrollPane, scrollStep, 0.5);
         scrollAnimation.play();
+        scrollAnimation.setOnFinished(actionEvent -> {
+            changeButtonStyle();
+        });
     }
 
     @FXML
@@ -63,11 +68,15 @@ public class DailyDataWindowController extends BaseController {
 
         Animation scrollAnimation = AnimationUtils.scrollPrevAnimation(scrollPane, scrollStep, 0.5);
         scrollAnimation.play();
+        scrollAnimation.setOnFinished(actionEvent -> {
+            changeButtonStyle();
+        });
     }
 
     public void initialize() {
         setUpScrollPane();
         setUpDataHBox();
+        dataPane.autosize();
         setUpPrevButton();
         setUpNextButton();
 
@@ -80,6 +89,7 @@ public class DailyDataWindowController extends BaseController {
     private void setUpScrollPane() {
         scrollPane.setMaxWidth(802);
         scrollPane.setMinWidth(100);
+        scrollPane.widthProperty().addListener(changeListener());
     }
 
     private void setUpDataHBox() {
@@ -194,5 +204,32 @@ public class DailyDataWindowController extends BaseController {
             iconPath = "/pl/pieter/icon/" + dailyDataModelFx.getIcon(index) + ".png";
         }
         return iconPath;
+    }
+
+    private ChangeListener<Number> changeListener() {
+        return new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                changeButtonStyle();
+            }
+        };
+    }
+
+    private void changeButtonStyle() {
+        if (scrollPane.getWidth() >= dataPane.getWidth()) {
+            nextButton.setDisable(true);
+            prevButton.setDisable(true);
+            return;
+        }
+        if (scrollPane.getHvalue() == scrollPane.getHmin()) {
+            prevButton.setDisable(true);
+        } else {
+            prevButton.setDisable(false);
+        }
+        if (scrollPane.getHvalue() == scrollPane.getHmax()) {
+            nextButton.setDisable(true);
+        } else {
+            nextButton.setDisable(false);
+        }
     }
 }
