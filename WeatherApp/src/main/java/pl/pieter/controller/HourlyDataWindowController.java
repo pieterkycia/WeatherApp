@@ -2,6 +2,7 @@ package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,6 +18,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import pl.pieter.model.HourlyDataModelFx;
+import pl.pieter.utils.AnimationUtils;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.utils.StringUtils;
 import pl.pieter.view.ViewManager;
@@ -47,14 +49,18 @@ public class HourlyDataWindowController extends BaseController {
 
     @FXML
     void nextButtonOnAction() {
-        double scrollHValue = 100 / (dataPane.getWidth() - scrollPane.getWidth());
-        scrollPane.setHvalue(scrollPane.getHvalue() + scrollHValue);
+        double scrollStep = scrollPane.getWidth() / Math.abs(scrollPane.getWidth() - dataPane.getWidth());
+
+        Animation scrollAnimation = AnimationUtils.scrollNextAnimation(scrollPane, scrollStep, 0.5);
+        scrollAnimation.play();
     }
 
     @FXML
     void prevButtonOnAction() {
-        double scrollHValue = 100 / (dataPane.getWidth() - scrollPane.getWidth());
-        scrollPane.setHvalue(scrollPane.getHvalue() - scrollHValue);
+        double scrollStep = scrollPane.getWidth() / Math.abs(scrollPane.getWidth() - dataPane.getWidth());
+
+        Animation scrollAnimation = AnimationUtils.scrollPrevAnimation(scrollPane, scrollStep, 0.5);
+        scrollAnimation.play();
     }
 
     public void initialize() {
