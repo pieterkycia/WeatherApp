@@ -120,29 +120,29 @@ public class DayDetailsDataWindowController extends BaseController {
         MOON_FIRST_QUARTER("Pierwsza kwadra", GlyphsDude.createIcon(WeatherIcons.MOON_FIRST_QUARTER, "30px")),
 
         MOON_WAXING_GIBBOUS_1("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
-        MOON_WAXING_GIBBOUS_2("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
-        MOON_WAXING_GIBBOUS_3("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
-        MOON_WAXING_GIBBOUS_4("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
-        MOON_WAXING_GIBBOUS_5("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
-        MOON_WAXING_GIBBOUS_6("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_1, "30px")),
+        MOON_WAXING_GIBBOUS_2("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_2, "30px")),
+        MOON_WAXING_GIBBOUS_3("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_3, "30px")),
+        MOON_WAXING_GIBBOUS_4("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_4, "30px")),
+        MOON_WAXING_GIBBOUS_5("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_5, "30px")),
+        MOON_WAXING_GIBBOUS_6("Przychodzący garb", GlyphsDude.createIcon(WeatherIcons.MOON_WAXING_GIBBOUS_6, "30px")),
 
         MOON_FULL("Pełnia", GlyphsDude.createIcon(WeatherIcons.MOON_FULL, "30px")),
 
         MOON_WANING_GIBBOUS_1("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
-        MOON_WANING_GIBBOUS_2("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
-        MOON_WANING_GIBBOUS_3("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
-        MOON_WANING_GIBBOUS_4("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
-        MOON_WANING_GIBBOUS_5("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
-        MOON_WANING_GIBBOUS_6("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_1, "30px")),
+        MOON_WANING_GIBBOUS_2("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_2, "30px")),
+        MOON_WANING_GIBBOUS_3("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_3, "30px")),
+        MOON_WANING_GIBBOUS_4("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_4, "30px")),
+        MOON_WANING_GIBBOUS_5("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_5, "30px")),
+        MOON_WANING_GIBBOUS_6("Zanikający garb", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_GIBBOUS_6, "30px")),
 
         MOON_3RD_QUARTER("Trzecia kwadra", GlyphsDude.createIcon(WeatherIcons.MOON_3RD_QUARTER, "30px")),
 
         MOON_WANING_CRESCENT_1("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
-        MOON_WANING_CRESCENT_2("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
-        MOON_WANING_CRESCENT_3("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
-        MOON_WANING_CRESCENT_4("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
-        MOON_WANING_CRESCENT_5("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
-        MOON_WANING_CRESCENT_6("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_1, "30px")),
+        MOON_WANING_CRESCENT_2("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_2, "30px")),
+        MOON_WANING_CRESCENT_3("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_3, "30px")),
+        MOON_WANING_CRESCENT_4("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_4, "30px")),
+        MOON_WANING_CRESCENT_5("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_5, "30px")),
+        MOON_WANING_CRESCENT_6("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_WANING_CRESCENT_6, "30px")),
 
         MOON_NEW_2("Zanikający sierp", GlyphsDude.createIcon(WeatherIcons.MOON_NEW, "30px"));
 
