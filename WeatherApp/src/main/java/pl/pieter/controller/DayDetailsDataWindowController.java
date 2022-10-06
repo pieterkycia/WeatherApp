@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -20,6 +21,8 @@ import java.util.Date;
 public class DayDetailsDataWindowController extends BaseController {
 
     private DailyData.DayData dayData;
+    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("  HH:mm");
+    private static final char degreeSign = 176;
 
     public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index) {
         super(viewManager, fxmlPath);
@@ -62,30 +65,54 @@ public class DayDetailsDataWindowController extends BaseController {
     @FXML
     private VBox vBoxData;
 
+
     @FXML
     public void initialize() {
-        char degreeSign = 176;
+        setUpTemperatureData();
+        setUpSunData();
+        setUpMoonData();
+        setUpOtherData();
+    }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+    private void setUpOtherData() {
+        rainLabel.setText(String.valueOf(Math.round(dayData.getPop() * 100)) + " %");
+        uvIndexLabel.setText(String.valueOf(Math.round(dayData.getUvi())));
+        humidityLabel.setText(String.valueOf(dayData.getHumidity()) + " %");
+        windSpeedLabel.setText(String.valueOf(Math.round(dayData.getWindSpeed()) + " m/s"));
+    }
 
-        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit()));
-        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit()));
+    private void setUpMoonData() {
+        Text moonRiseIcon = GlyphsDude.createIcon(WeatherIcon.MOONRISE, "25px");
+        moonRiseIcon.getStyleClass().add("dayDetailsIcons");
 
-
-        sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
-        sunsetLabel.setText(simpleDateFormat.format(new Date(dayData.getSunset() * 1000)));
+        Text moonSetIcon = GlyphsDude.createIcon(WeatherIcon.MOONSET, "25px");
+        moonSetIcon.getStyleClass().add("dayDetailsIcons");
 
         moonriseLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonrise() * 1000)));
+        moonriseLabel.setGraphic(moonRiseIcon);
         moonsetLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonset() * 1000)));
+        moonsetLabel.setGraphic(moonSetIcon);
+
         moonPhaseVBox.getChildren().add(setMoonPhase());
+    }
 
-        rainLabel.setText(String.valueOf(Math.round(dayData.getPop() * 100)) + " %");
+    private void setUpSunData() {
+        Text sunRiseIcon = GlyphsDude.createIcon(WeatherIcon.SUNRISE, "25px");
+        sunRiseIcon.getStyleClass().add("dayDetailsIcons");
 
-        uvIndexLabel.setText(String.valueOf(Math.round(dayData.getUvi())));
+        Text sunSetIcon = GlyphsDude.createIcon(WeatherIcon.SUNSET, "25px");
+        sunSetIcon.getStyleClass().add("dayDetailsIcons");
 
-        humidityLabel.setText(String.valueOf(dayData.getHumidity()) + " %");
+        sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
+        sunriseLabel.setGraphic(sunRiseIcon);
 
-        windSpeedLabel.setText(String.valueOf(Math.round(dayData.getWindSpeed()) + " m/s"));
+        sunsetLabel.setText(simpleDateFormat.format(new Date(dayData.getSunset() * 1000)));
+        sunsetLabel.setGraphic(sunSetIcon);
+    }
+
+    private void setUpTemperatureData() {
+        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit()));
+        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit()));
     }
 
     private VBox setMoonPhase() {
