@@ -1,7 +1,7 @@
 package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.Animation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -145,7 +145,7 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private void setUpNextButton() {
-        Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_RIGHT, "30px");
+        Text nextButtonIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_CIRCLE_ALT_RIGHT, "30px");
         nextButtonIcon.getStyleClass().add("hourlyWindowIcons");
 
         nextButton.getStyleClass().add("hourlyWindowButtons");
@@ -155,7 +155,7 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private void setUpPrevButton() {
-        Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.ARROW_CIRCLE_O_LEFT, "30px");
+        Text prevButtonIcon = GlyphsDude.createIcon(FontAwesomeIcon.ARROW_CIRCLE_ALT_LEFT, "30px");
         prevButtonIcon.getStyleClass().add("hourlyWindowIcons");
 
         prevButton.getStyleClass().add("hourlyWindowButtons");

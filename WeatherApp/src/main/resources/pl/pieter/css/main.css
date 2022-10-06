@@ -74,7 +74,7 @@
 }
 
 .topBarIcons {
--fx-fill: white;
+-fx-fill: #FFFFFF;
 }
 
 .topBar {
@@ -82,7 +82,15 @@
 }
 
 .separator *.line {
-    -fx-border-style: solid;
-    -fx-border-color: #FFFFFF;
-    -fx-border-width: 0 0 1 0;
+-fx-border-style: solid;
+-fx-border-color: #FFFFFF;
+-fx-border-width: 0 0 1 0;
+}
+
+.moonPhaseIconBright > .glyph-icon {
+-fx-fill: #FFFFFF;
+}
+
+.moonPhaseIconDark > .glyph-icon {
+-fx-fill: #4B5BF2;
 }
