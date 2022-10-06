@@ -90,7 +90,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private VBox setMoonPhase() {
         double step = 100.0 / (MoonPhase.values().length - 1);
-        int moonPhase = (int) Math.round((dayData.getMoonPhase() * 100) / step);
+        int moonPhase = (int) Math.floor((dayData.getMoonPhase() * 100) / step);
 
         HBox moonIconHBox = new HBox();
         moonIconHBox.getChildren().addAll(
