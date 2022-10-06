@@ -1,7 +1,7 @@
 package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -103,7 +103,7 @@ public class MainWindowController extends BaseController {
     }
 
     private void setUpRefreshButton() {
-        Text refreshButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.REFRESH, "30px");
+        Text refreshButtonIcon = GlyphsDude.createIcon(FontAwesomeIcon.REFRESH, "30px");
         refreshButtonIcon.getStyleClass().add("topBarIcons");
 
         refreshButton.getStyleClass().add("topBarButtons");
@@ -113,7 +113,7 @@ public class MainWindowController extends BaseController {
     }
 
     private void setUpSearchButton() {
-        Text searchButtonIcon = GlyphsDude.createIcon(FontAwesomeIcons.SEARCH, "30px");
+        Text searchButtonIcon = GlyphsDude.createIcon(FontAwesomeIcon.SEARCH, "30px");
         searchButtonIcon.getStyleClass().add("topBarIcons");
 
         searchButton.getStyleClass().add("topBarButtons");

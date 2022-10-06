@@ -1,11 +1,10 @@
 package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
-import de.jensd.fx.glyphs.weathericons.WeatherIcons;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -154,47 +153,47 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     public enum MoonPhase {
-        MOON_NEW("Nów", WeatherIcons.MOON_NEW),
-        MOON_WAXING_CRESCENT_1("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_1),
-        MOON_WAXING_CRESCENT_2("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_2),
-        MOON_WAXING_CRESCENT_3("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_3),
-        MOON_WAXING_CRESCENT_4("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_4),
-        MOON_WAXING_CRESCENT_5("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_5),
-        MOON_WAXING_CRESCENT_6("Przychadzący sierp", WeatherIcons.MOON_WAXING_CRESENT_6),
+        MOON_NEW("Nów", WeatherIcon.MOON_ALT_FULL),
+        MOON_WAXING_CRESCENT_1("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_1),
+        MOON_WAXING_CRESCENT_2("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_2),
+        MOON_WAXING_CRESCENT_3("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_3),
+        MOON_WAXING_CRESCENT_4("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_4),
+        MOON_WAXING_CRESCENT_5("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_5),
+        MOON_WAXING_CRESCENT_6("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_6),
 
-        MOON_FIRST_QUARTER("Pierwsza kwadra", WeatherIcons.MOON_FIRST_QUARTER),
+        MOON_FIRST_QUARTER("Pierwsza kwadra", WeatherIcon.MOON_ALT_THIRD_QUARTER),
 
-        MOON_WAXING_GIBBOUS_1("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_1),
-        MOON_WAXING_GIBBOUS_2("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_2),
-        MOON_WAXING_GIBBOUS_3("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_3),
-        MOON_WAXING_GIBBOUS_4("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_4),
-        MOON_WAXING_GIBBOUS_5("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_5),
-        MOON_WAXING_GIBBOUS_6("Przychodzący garb", WeatherIcons.MOON_WAXING_GIBBOUS_6),
+        MOON_WAXING_GIBBOUS_1("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_1),
+        MOON_WAXING_GIBBOUS_2("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_2),
+        MOON_WAXING_GIBBOUS_3("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_3),
+        MOON_WAXING_GIBBOUS_4("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_4),
+        MOON_WAXING_GIBBOUS_5("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_5),
+        MOON_WAXING_GIBBOUS_6("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_6),
 
-        MOON_FULL("Pełnia", WeatherIcons.MOON_FULL),
+        MOON_FULL("Pełnia", WeatherIcon.MOON_ALT_NEW),
 
-        MOON_WANING_GIBBOUS_1("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_1),
-        MOON_WANING_GIBBOUS_2("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_2),
-        MOON_WANING_GIBBOUS_3("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_3),
-        MOON_WANING_GIBBOUS_4("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_4),
-        MOON_WANING_GIBBOUS_5("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_5),
-        MOON_WANING_GIBBOUS_6("Zanikający garb", WeatherIcons.MOON_WANING_GIBBOUS_6),
+        MOON_WANING_GIBBOUS_1("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_1),
+        MOON_WANING_GIBBOUS_2("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_2),
+        MOON_WANING_GIBBOUS_3("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_3),
+        MOON_WANING_GIBBOUS_4("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_4),
+        MOON_WANING_GIBBOUS_5("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_5),
+        MOON_WANING_GIBBOUS_6("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_6),
 
-        MOON_3RD_QUARTER("Trzecia kwadra", WeatherIcons.MOON_3RD_QUARTER),
+        MOON_3RD_QUARTER("Trzecia kwadra", WeatherIcon.MOON_ALT_FIRST_QUARTER),
 
-        MOON_WANING_CRESCENT_1("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_1),
-        MOON_WANING_CRESCENT_2("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_2),
-        MOON_WANING_CRESCENT_3("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_3),
-        MOON_WANING_CRESCENT_4("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_4),
-        MOON_WANING_CRESCENT_5("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_5),
-        MOON_WANING_CRESCENT_6("Zanikający sierp", WeatherIcons.MOON_WANING_CRESCENT_6),
+        MOON_WANING_CRESCENT_1("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_1),
+        MOON_WANING_CRESCENT_2("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_2),
+        MOON_WANING_CRESCENT_3("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_3),
+        MOON_WANING_CRESCENT_4("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_4),
+        MOON_WANING_CRESCENT_5("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_5),
+        MOON_WANING_CRESCENT_6("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_6),
 
-        MOON_NEW_2("Nów", WeatherIcons.MOON_NEW);
+        MOON_NEW_2("Nów", WeatherIcon.MOON_ALT_FULL);
 
         private String description;
-        private WeatherIcons icon;
+        private WeatherIcon icon;
 
-        MoonPhase(String description, WeatherIcons icon) {
+        MoonPhase(String description, WeatherIcon icon) {
             this.description = description;
             this.icon = icon;
         }
