@@ -6,12 +6,14 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import pl.pieter.utils.IconsUtils;
+import pl.pieter.utils.SvgGlyphUtils;
 import pl.pieter.view.ViewManager;
 import pl.pieter.weather.library.DailyData;
 
@@ -111,8 +113,19 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private void setUpTemperatureData() {
-        maxTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit()));
-        minTempLabel.setText(String.valueOf(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit()));
+        maxTempLabel.setText("  " + Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit());
+        minTempLabel.setText("  " + Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit());
+
+        Region maxTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MAX.getSvgPath(), 20, 30);
+        maxTempIcon.setRotate(180);
+        maxTempIcon.getStyleClass().add("svgPathIcons");
+
+        Region minTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MIN.getSvgPath(), 20, 30);
+        minTempIcon.setRotate(180);
+        minTempIcon.getStyleClass().add("svgPathIcons");
+
+        maxTempLabel.setGraphic(maxTempIcon);
+        minTempLabel.setGraphic(minTempIcon);
     }
 
     private VBox setMoonPhase() {

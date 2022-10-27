@@ -98,3 +98,7 @@
 .dayDetailsIcons {
 -fx-fill: #FFFFFF;
 }
+
+.svgPathIcons {
+-fx-background-color: #FFFFFF;
+}
