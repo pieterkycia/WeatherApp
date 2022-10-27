@@ -5,13 +5,18 @@ import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.ArcType;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import pl.pieter.utils.IconsUtils;
 import pl.pieter.utils.SvgGlyphUtils;
 import pl.pieter.view.ViewManager;
@@ -77,10 +82,10 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private void setUpOtherData() {
-        rainLabel.setText(String.valueOf(Math.round(dayData.getPop() * 100)) + " %");
-        uvIndexLabel.setText(String.valueOf(Math.round(dayData.getUvi())));
-        humidityLabel.setText(String.valueOf(dayData.getHumidity()) + " %");
-        windSpeedLabel.setText(String.valueOf(Math.round(dayData.getWindSpeed()) + " m/s"));
+        rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
+        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi()), "\nNiskie"));
+        humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
+        windSpeedLabel.setGraphic(drawCircleBarWind((int) (Math.round(dayData.getWindSpeed() * 3.6)), dayData.getWindDeg()));
     }
 
     private void setUpMoonData() {
@@ -126,6 +131,86 @@ public class DayDetailsDataWindowController extends BaseController {
 
         maxTempLabel.setGraphic(maxTempIcon);
         minTempLabel.setGraphic(minTempIcon);
+    }
+
+    private Canvas drawCircleBarProgress(int progress, String text) {
+        Canvas canvas = new Canvas(115, 115);
+        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setFill(Color.WHITE);
+        graphicsContext.setLineWidth(7);
+        graphicsContext.setFont(Font.font(20));
+        graphicsContext.setTextAlign(TextAlignment.CENTER);
+
+        graphicsContext.setStroke(Color.valueOf("#4B5BF2"));
+        graphicsContext.strokeArc(17.5, 17.5, 80, 80, 0, 360, ArcType.OPEN);
+
+        graphicsContext.setStroke(Color.WHITE);
+        graphicsContext.strokeArc(17.5, 17.5, 80, 80, 90, ((-progress * 3.6)), ArcType.OPEN);
+
+        if (text == "" || text == "%") {
+            graphicsContext.fillText(progress + text, 57.5, 65);
+        } else {
+            graphicsContext.fillText(progress + "", 57.5, 55);
+            graphicsContext.setFont(Font.font(12));
+            graphicsContext.fillText(text, 57.5, 55);
+        }
+        return canvas;
+    }
+
+    private Canvas drawCircleBarWind(int progress, int degree) {
+        Canvas canvas = new Canvas(115, 115);
+        GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext.setFill(Color.WHITE);
+        graphicsContext.setStroke(Color.WHITE);
+        graphicsContext.setLineWidth(7);
+        graphicsContext.setFont(Font.font(20));
+        graphicsContext.setTextAlign(TextAlignment.CENTER);
+
+        graphicsContext.strokeArc(17.5, 17.5, 80, 80, 0, 360, ArcType.OPEN);
+
+        graphicsContext.setStroke(Color.valueOf("#4B5BF2"));
+        double deg = 28.5;
+        for (int i = 0; i < 8; i++) {
+            graphicsContext.strokeArc(17.5, 17.5, 80, 80, deg, 34, ArcType.OPEN);
+            deg += 45;
+        }
+
+        graphicsContext.setStroke(Color.WHITE);
+        graphicsContext.strokeArc(17.5, 17.5, 80, 80, getWindDegree(degree), 34, ArcType.OPEN);
+
+        graphicsContext.fillText(progress + "", 57.5, 55);
+        graphicsContext.setFont(Font.font(12));
+        graphicsContext.fillText("km/h", 57.5, 72);
+
+        graphicsContext.setFont(Font.font(10));
+        graphicsContext.fillText("Z", 5, 62.5);
+        graphicsContext.fillText("W", 110, 62.5);
+        graphicsContext.fillText("PN", 57.5, 10);
+        graphicsContext.fillText("PD", 57.5, 112);
+
+        return canvas;
+    }
+
+    private double getWindDegree(int degree) {
+        if (degree <= 22.5) {
+            return 253.5;
+        } else if (degree <= 67.5) {
+            return 208.5;
+        } else if (degree <= 112.5) {
+            return 163.5;
+        } else if (degree <= 157.5) {
+            return 118.5;
+        } else if (degree <= 202.5) {
+            return 73.5;
+        } else if (degree <= 247.5) {
+            return 28.5;
+        } else if (degree <= 292.5) {
+            return 343.5;
+        } else if (degree <= 337.5) {
+            return 298.5;
+        } else {
+            return 253.5;
+        }
     }
 
     private VBox setMoonPhase() {

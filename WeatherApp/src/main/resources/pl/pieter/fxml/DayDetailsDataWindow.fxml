@@ -31,7 +31,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="maxTempLabel" text="04:26" textFill="WHITE">
+                        <Label fx:id="maxTempLabel" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -41,7 +41,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="minTempLabel" layoutX="10.0" layoutY="53.0" text="04:26" textFill="WHITE">
+                        <Label fx:id="minTempLabel" layoutX="10.0" layoutY="53.0" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -62,7 +62,7 @@
                         </Label>
                         <HBox alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="sunriseLabel" text="04:26" textFill="WHITE">
+                              <Label fx:id="sunriseLabel" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -76,7 +76,7 @@
                         </Label>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="31.0">
                            <children>
-                              <Label fx:id="sunsetLabel" text="20:34" textFill="WHITE">
+                              <Label fx:id="sunsetLabel" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -99,7 +99,7 @@
                         </Label>
                         <HBox alignment="CENTER_LEFT">
                            <children>
-                              <Label fx:id="moonriseLabel" text="02:01" textFill="WHITE">
+                              <Label fx:id="moonriseLabel" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -113,7 +113,7 @@
                         </Label>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="31.0">
                            <children>
-                              <Label fx:id="moonsetLabel" text="13:08" textFill="WHITE">
+                              <Label fx:id="moonsetLabel" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -137,14 +137,14 @@
                         </Separator>
                         <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                            <children>
-                              <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                              <VBox minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
                                     <Label text="Opady" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="rainLabel" layoutX="10.0" layoutY="10.0" text="7%" textFill="WHITE">
+                                    <Label fx:id="rainLabel" layoutX="10.0" layoutY="10.0" textFill="WHITE">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
@@ -154,21 +154,21 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="uvIndexLabel" layoutX="10.0" layoutY="30.0" text="5" textFill="WHITE">
+                                    <Label fx:id="uvIndexLabel" layoutX="10.0" layoutY="30.0" textFill="WHITE">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0">
+                              <VBox layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
                                     <Label text="Wilgotność" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="humidityLabel" layoutX="10.0" layoutY="10.0" text="40%" textFill="WHITE">
+                                    <Label fx:id="humidityLabel" layoutX="10.0" layoutY="10.0" textFill="WHITE">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
@@ -178,7 +178,7 @@
                                           <Font name="System Bold" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="windSpeedLabel" layoutX="10.0" layoutY="30.0" text="12 km/h" textFill="WHITE">
+                                    <Label fx:id="windSpeedLabel" layoutX="10.0" layoutY="30.0" textFill="WHITE">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
