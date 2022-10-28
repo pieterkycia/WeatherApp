@@ -2,12 +2,9 @@ package pl.pieter.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import pl.pieter.model.AlertsDataModelFx;
 import pl.pieter.view.ViewManager;
 
@@ -34,16 +31,13 @@ public class AlertsDataWindowController extends BaseController {
         int size = alertsDataModelFx.getAlertsData().getAlertDataList().size();
         for (int i = 0; i < size; i++) {
             VBox vBox = new VBox();
-            vBox.setAlignment(Pos.TOP_CENTER);
+            vBox.getStyleClass().add("alert");
             VBox.setMargin(vBox, new Insets(5));
 
             for (int j = 0; j < alertsDataModelFx.getTags(i).size(); j++) {
                 Label label = new Label(alertsDataModelFx.getTags(i).get(j));
-                label.setTextFill(Paint.valueOf("#ffffff"));
-                label.setFont(new Font("system", 30));
                 vBox.getChildren().add(label);
             }
-
             setDataVBoxBackground(vBox, alertsDataModelFx.getEvent(i));
             dataVBox.getChildren().add(vBox);
         }
@@ -51,14 +45,14 @@ public class AlertsDataWindowController extends BaseController {
 
     private void setDataVBoxBackground(Node node, String event) {
         if (event.toLowerCase().contains("red")) {
-            node.setStyle("-fx-background-color: #e60000");
+            node.getStyleClass().add("redAlert");
         } else if (event.toLowerCase().contains("yellow")) {
-            node.setStyle("-fx-background-color: #e6e600");
+            node.getStyleClass().add("yellowAlert");
         } else if (event.toLowerCase().contains("orange")) {
-            node.setStyle("-fx-background-color: #e68a00");
+            node.getStyleClass().add("orangeAlert");
         } else {
             // green color
-            node.setStyle("-fx-background-color: #39e600");
+            node.getStyleClass().add("greenAlert");
         }
     }
 }
