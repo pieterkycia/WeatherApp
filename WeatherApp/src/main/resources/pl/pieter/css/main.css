@@ -94,3 +94,11 @@
 .moonPhaseIconDark > .glyph-icon {
 -fx-fill: #4B5BF2;
 }
+
+.dayDetailsIcons {
+-fx-fill: #FFFFFF;
+}
+
+.svgPathIcons {
+-fx-background-color: #FFFFFF;
+}
