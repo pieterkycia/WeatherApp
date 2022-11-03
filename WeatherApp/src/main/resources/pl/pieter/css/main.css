@@ -102,3 +102,26 @@
 .svgPathIcons {
 -fx-background-color: #FFFFFF;
 }
+
+.alert {
+-fx-background-radius: 15px;
+-fx-background-color: transparent;
+-fx-alignment: center;
+-fx-font-size: 25px;
+}
+
+.redAlert {
+-fx-background-color: #FF4D4D;
+}
+
+.orangeAlert {
+-fx-background-color: #FFB84D;
+}
+
+.yellowAlert {
+-fx-background-color: #FFFF4D;
+}
+
+.greenAlert {
+-fx-background-color: #70DB70;
+}
