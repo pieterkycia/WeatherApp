@@ -21,6 +21,9 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentCityNameLabel;
 
     @FXML
+    private Label currentCountryLabel;
+
+    @FXML
     private Label currentDescriptionLabel;
 
     @FXML
@@ -52,6 +55,7 @@ public class CurrentDataWindowController extends BaseController {
 
     public void initialize() {
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
+        this.currentCountryLabel.setText(currentDataModelFx.getCountry());
         this.currentIconImageView.setImage(new Image(setIcon()));
         this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " \u00B0" + viewManager.getUnit()));
         this.currentDescriptionLabel.setText(StringUtils.capitalize(currentDataModelFx.getDescription()));

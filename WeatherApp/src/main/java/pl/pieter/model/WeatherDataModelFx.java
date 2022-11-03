@@ -17,7 +17,7 @@ public class WeatherDataModelFx {
         this.weatherClient = new WeatherClient();
         WeatherData weatherData = new WeatherData(weatherClient.getWeatherDataByCityName(cityName, country));
         this.alertsDataModelFx = new AlertsDataModelFx(weatherData.getAlerts());
-        this.currentDataModelFx = new CurrentDataModelFx(weatherData.getCurrent(), weatherData.getCityName());
+        this.currentDataModelFx = new CurrentDataModelFx(weatherData.getCurrent(), weatherData.getCityName(), weatherData.getCountry());
         this.dailyDataModelFx = new DailyDataModelFx(weatherData.getDaily());
         this.hourlyDataModelFx = new HourlyDataModelFx(weatherData.getHourly());
     }

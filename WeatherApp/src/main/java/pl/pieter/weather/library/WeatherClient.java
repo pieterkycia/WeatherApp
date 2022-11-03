@@ -105,8 +105,8 @@ public class WeatherClient {
             String longitude = coordinatesJsonObject.optString("lon");
             JSONObject jsonObject = getWeatherDataByCoordinates(latitude, longitude);
 
-            String name = getCityName(latitude, longitude);
-            jsonObject.put("city", name);
+            jsonObject.put("city", coordinatesJsonObject.optString("name"));
+            jsonObject.put("country", coordinatesJsonObject.optString("country"));
 
             return jsonObject;
         }
