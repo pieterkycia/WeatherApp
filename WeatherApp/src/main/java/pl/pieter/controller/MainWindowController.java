@@ -66,7 +66,7 @@ public class MainWindowController extends BaseController {
     @FXML
     public void searchOnAction() {
         try {
-            viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText());
+            viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText(), countryTextField.getText());
             loadAllData();
         } catch (IOException e) {
             System.out.println("IOException");

@@ -22,7 +22,7 @@ public class WeatherManager {
         return viewManager;
     }
 
-    public void createNewWeatherDataModelFx(String cityName) throws IOException, InterruptedException {
-        this.weatherDataModelFx = new WeatherDataModelFx(cityName);
+    public void createNewWeatherDataModelFx(String cityName, String country) throws IOException, InterruptedException {
+        this.weatherDataModelFx = new WeatherDataModelFx(cityName, country);
     }
 }

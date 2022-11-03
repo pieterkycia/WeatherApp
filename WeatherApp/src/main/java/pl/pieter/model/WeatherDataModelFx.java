@@ -13,9 +13,9 @@ public class WeatherDataModelFx {
     private DailyDataModelFx dailyDataModelFx;
     private HourlyDataModelFx hourlyDataModelFx;
 
-    public WeatherDataModelFx(String cityName) throws IOException, InterruptedException {
+    public WeatherDataModelFx(String cityName, String country) throws IOException, InterruptedException {
         this.weatherClient = new WeatherClient();
-        WeatherData weatherData = new WeatherData(weatherClient.getWeatherDataByCityName(cityName));
+        WeatherData weatherData = new WeatherData(weatherClient.getWeatherDataByCityName(cityName, country));
         this.alertsDataModelFx = new AlertsDataModelFx(weatherData.getAlerts());
         this.currentDataModelFx = new CurrentDataModelFx(weatherData.getCurrent(), weatherData.getCityName());
         this.dailyDataModelFx = new DailyDataModelFx(weatherData.getDaily());
