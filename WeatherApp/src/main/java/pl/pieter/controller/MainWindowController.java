@@ -26,6 +26,9 @@ public class MainWindowController extends BaseController {
     private TextField cityNameTextField;
 
     @FXML
+    private TextField countryTextField;
+
+    @FXML
     private VBox dataVBox;
 
     @FXML
