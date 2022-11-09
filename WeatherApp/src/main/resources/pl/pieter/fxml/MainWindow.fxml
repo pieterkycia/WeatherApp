@@ -33,7 +33,7 @@
                         </Button>
                         <ComboBox fx:id="countryComboBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.8" prefWidth="150.0" promptText="Państwo">
                            <HBox.margin>
-                              <Insets left="5.0" right="5.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
                         </ComboBox>
                         <TextField fx:id="cityNameTextField" alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.8" prefWidth="200.0" promptText="Miasto">
