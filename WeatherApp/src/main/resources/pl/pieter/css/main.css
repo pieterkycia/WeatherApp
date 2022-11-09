@@ -125,3 +125,13 @@
 .greenAlert {
 -fx-background-color: #70DB70;
 }
+
+.countryComboBox {
+-fx-font-size: 10px;
+-fx-cursor: hand;
+}
+
+.countryComboBox >.list-cell{
+-fx-font-size: 16px;
+-fx-padding: 0;
+}

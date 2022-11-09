@@ -5,10 +5,12 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import pl.pieter.utils.CountryCodes;
 import pl.pieter.utils.FxmlUtils;
 import pl.pieter.view.ViewManager;
 
@@ -26,7 +28,7 @@ public class MainWindowController extends BaseController {
     private TextField cityNameTextField;
 
     @FXML
-    private TextField countryTextField;
+    private ComboBox<CountryCodes> countryComboBox;
 
     @FXML
     private VBox dataVBox;
@@ -49,8 +51,10 @@ public class MainWindowController extends BaseController {
         setUpRefreshButton();
         setUpSearchButton();
         setUpTopBarHBox();
+        setUpCountryComboBox();
 
         cityNameTextField.setText("korytniki");
+        countryComboBox.setValue(CountryCodes.PL);
         searchOnAction();
     }
 
@@ -66,7 +70,7 @@ public class MainWindowController extends BaseController {
     @FXML
     public void searchOnAction() {
         try {
-            viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText(), countryTextField.getText());
+            viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText(), countryComboBox.getValue().name());
             loadAllData();
         } catch (IOException e) {
             System.out.println("IOException");
@@ -123,5 +127,13 @@ public class MainWindowController extends BaseController {
         searchButton.setGraphic(searchButtonIcon);
         searchButton.setAlignment(Pos.CENTER);
         searchButton.setPrefHeight(36.8);
+    }
+
+    private void setUpCountryComboBox() {
+        for (int i = 0; i < CountryCodes.values().length; i++) {
+            countryComboBox.getItems().add(CountryCodes.values()[i]);
+        }
+        countryComboBox.getStyleClass().add("text-input");
+        countryComboBox.getStyleClass().add("countryComboBox");
     }
 }
