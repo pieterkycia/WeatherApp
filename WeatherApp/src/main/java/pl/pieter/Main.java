@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import pl.pieter.weather.library.WeatherClient;
 
 import java.io.IOException;
 

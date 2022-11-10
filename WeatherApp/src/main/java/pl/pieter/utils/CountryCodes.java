@@ -250,7 +250,7 @@ public enum CountryCodes {
     ZW("Zimbabwe"),
     AX("Åland Islands");
 
-   CountryCodes(String fullName) {
+    CountryCodes(String fullName) {
         this.fullName = fullName;
     }
 
@@ -258,6 +258,6 @@ public enum CountryCodes {
 
     @Override
     public String toString() {
-       return fullName;
+        return fullName;
     }
 }
