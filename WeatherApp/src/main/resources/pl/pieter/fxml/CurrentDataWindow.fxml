@@ -20,6 +20,16 @@
                               <Font size="26.0" />
                            </font>
                         </Label>
+                        <Label alignment="TOP_CENTER" layoutX="60.0" layoutY="10.0" text=", " textFill="WHITE">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="currentCountryLabel" alignment="TOP_CENTER" layoutX="54.0" layoutY="10.0" textFill="WHITE">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER">

@@ -6,10 +6,12 @@ public class CurrentDataModelFx {
 
     private CurrentData currentData;
     private String cityName;
+    private String country;
 
-    public CurrentDataModelFx(CurrentData currentData, String cityName) {
+    public CurrentDataModelFx(CurrentData currentData, String cityName, String country) {
         this.currentData = currentData;
         this.cityName = cityName;
+        this.country = country;
     }
 
     public boolean hasCityName() {
@@ -18,6 +20,14 @@ public class CurrentDataModelFx {
 
     public String getCityName() {
         return cityName;
+    }
+
+    public boolean hasCountry() {
+        return !country.contains("-1");
+    }
+
+    public String getCountry() {
+        return country;
     }
 
     public boolean hasIcon() {
