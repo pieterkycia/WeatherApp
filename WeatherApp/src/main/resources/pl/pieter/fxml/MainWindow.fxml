@@ -53,7 +53,7 @@
             </VBox>
          </children>
       </HBox>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent;">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="customScrollPane">
          <content>
             <HBox alignment="TOP_CENTER">
                <children>
@@ -69,6 +69,9 @@
                </children>
             </HBox>
          </content>
+         <VBox.margin>
+            <Insets right="3.0" />
+         </VBox.margin>
       </ScrollPane>
    </children>
 </VBox>

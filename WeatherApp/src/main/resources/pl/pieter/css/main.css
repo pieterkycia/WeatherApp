@@ -1,137 +1,183 @@
 .clearVbox {
--fx-border-style: solid;
--fx-border-width: 1px;
--fx-border-color: transparent;
--fx-border-radius: 5px;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: transparent;
+  -fx-border-radius: 5px;
 }
 
 .clearVbox:hover {
--fx-border-style: solid;
--fx-border-width: 1px;
--fx-border-color: white;
--fx-border-radius: 5px;
--fx-cursor: hand;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: white;
+  -fx-border-radius: 5px;
+  -fx-cursor: hand;
 }
 
 .clickedVbox {
--fx-border-style: solid;
--fx-border-width: 1px;
--fx-border-color: transparent;
--fx-border-radius: 5px;
--fx-background-color: #3A4AE1;
--fx-background-radius: 5px;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: transparent;
+  -fx-border-radius: 5px;
+  -fx-background-color: #3A4AE1;
+  -fx-background-radius: 5px;
 }
 
 .clickedVbox:hover {
--fx-border-style: solid;
--fx-border-width: 1px;
--fx-border-color: white;
--fx-border-radius: 5px;
--fx-cursor: hand;
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: white;
+  -fx-border-radius: 5px;
+  -fx-cursor: hand;
 }
 
 .dailyWindowIcons {
--fx-fill: #6D7DF4;
+  -fx-fill: #6D7DF4;
 }
 
 .dailyWindowButtons {
--fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 .dailyWindowButtons:hover {
--fx-cursor: hand;
+  -fx-cursor: hand;
 }
 
-.dailyWindowButtons:hover > .dailyWindowIcons{
--fx-cursor: hand;
--fx-fill: white;
+.dailyWindowButtons:hover > .dailyWindowIcons {
+  -fx-cursor: hand;
+  -fx-fill: white;
 }
 
 .hourlyWindowIcons {
--fx-fill: #6D7DF4;
+  -fx-fill: #6D7DF4;
 }
 
 .hourlyWindowButtons {
--fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 .hourlyWindowButtons:hover {
--fx-cursor: hand;
+  -fx-cursor: hand;
 }
 
-.hourlyWindowButtons:hover > .hourlyWindowIcons{
--fx-cursor: hand;
--fx-fill: white;
+.hourlyWindowButtons:hover > .hourlyWindowIcons {
+  -fx-cursor: hand;
+  -fx-fill: white;
 }
 
 .topBarButtons {
--fx-background-color: transparent;
+  -fx-background-color: transparent;
 }
 
 .topBarButtons:hover {
--fx-cursor: hand;
--fx-background-color: #4B5BF2;
+  -fx-cursor: hand;
+  -fx-background-color: #4B5BF2;
 }
 
 .topBarIcons {
--fx-fill: #FFFFFF;
+  -fx-fill: #FFFFFF;
 }
 
 .topBar {
--fx-background-color: #002C88;
+  -fx-background-color: #002C88;
 }
 
 .separator *.line {
--fx-border-style: solid;
--fx-border-color: #FFFFFF;
--fx-border-width: 0 0 1 0;
+  -fx-border-style: solid;
+  -fx-border-color: #FFFFFF;
+  -fx-border-width: 0 0 1 0;
 }
 
 .moonPhaseIconBright > .glyph-icon {
--fx-fill: #FFFFFF;
+  -fx-fill: #FFFFFF;
 }
 
 .moonPhaseIconDark > .glyph-icon {
--fx-fill: #4B5BF2;
+  -fx-fill: #4B5BF2;
 }
 
 .dayDetailsIcons {
--fx-fill: #FFFFFF;
+  -fx-fill: #FFFFFF;
 }
 
 .svgPathIcons {
--fx-background-color: #FFFFFF;
+  -fx-background-color: #FFFFFF;
 }
 
 .alert {
--fx-background-radius: 15px;
--fx-background-color: transparent;
--fx-alignment: center;
--fx-font-size: 25px;
+  -fx-background-radius: 15px;
+  -fx-background-color: transparent;
+  -fx-alignment: center;
+  -fx-font-size: 25px;
 }
 
 .redAlert {
--fx-background-color: #FF4D4D;
+  -fx-background-color: #FF4D4D;
 }
 
 .orangeAlert {
--fx-background-color: #FFB84D;
+  -fx-background-color: #FFB84D;
 }
 
 .yellowAlert {
--fx-background-color: #FFFF4D;
+  -fx-background-color: #FFFF4D;
 }
 
 .greenAlert {
--fx-background-color: #70DB70;
+  -fx-background-color: #70DB70;
 }
 
 .countryComboBox {
--fx-font-size: 12px;
--fx-cursor: hand;
+  -fx-font-size: 12px;
+  -fx-cursor: hand;
 }
 
 .countryComboBox >.list-cell{
--fx-font-size: 16px;
--fx-padding: 0;
+  -fx-font-size: 16px;
+  -fx-padding: 0;
+}
+
+.customScrollPane {
+  -fx-background-color: transparent;
+  -fx-background: transparent;
+}
+
+.customScrollPane > .scroll-bar:horizontal,
+.customScrollPane > .scroll-bar:vertical {
+  -fx-background-color: transparent;
+  -fx-font-size: 5px;
+  -fx-padding: 0 0 0 5px;
+}
+
+.customScrollPane > .increment-button, .customScrollPane > .decrement-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+}
+
+.customScrollPane > .scroll-bar > .increment-button > .increment-arrow,
+.customScrollPane > .scroll-bar > .decrement-button > .decrement-arrow {
+  -fx-background-color: transparent;
+}
+
+.customScrollPane > .scroll-bar:horizontal > .track,
+.customScrollPane > .scroll-bar:vertical > .track {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+}
+
+.customScrollPane > .scroll-bar:horizontal > .thumb,
+.customScrollPane > .scroll-bar:vertical > .thumb {
+  -fx-background-color: white;
+  -fx-background-radius: 5px;
+}
+
+.customScrollPane > .scroll-bar:horizontal:hover,
+.customScrollPane > .scroll-bar:vertical:hover {
+  -fx-font-size: 10px;
+  -fx-cursor: hand;
+}
+
+.customScrollPane > .scroll-bar:horizontal:pressed,
+.customScrollPane > .scroll-bar:vertical:pressed {
+  -fx-font-size: 10px;
+  -fx-cursor: hand;
 }
