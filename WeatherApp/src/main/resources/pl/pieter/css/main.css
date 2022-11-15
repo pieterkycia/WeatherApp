@@ -144,11 +144,12 @@
 .customScrollPane > .scroll-bar {
   -fx-background-color: transparent;
   -fx-font-size: 3px;
-  -fx-padding: 0 0 0 5px;
+  -fx-padding: 0 0 0 7px;
 }
 
 .customScrollPane > .scroll-bar > .increment-button,
- customScrollPane > .scroll-bar  > .decrement-button {
+.customScrollPane > .scroll-bar  > .decrement-button,
+.customScrollPane > .scroll-bar > .track {
   -fx-background-color: transparent;
   -fx-border-color: transparent;
 }
@@ -158,22 +159,14 @@
   -fx-background-color: transparent;
 }
 
-.customScrollPane > .scroll-bar > .track {
-  -fx-background-color: transparent;
-  -fx-border-color: transparent;
-}
-
 .customScrollPane > .scroll-bar > .thumb {
   -fx-background-color: white;
   -fx-background-radius: 5px;
 }
 
-.customScrollPane > .scroll-bar:hover {
-  -fx-font-size: 10px;
-  -fx-cursor: hand;
-}
-
+.customScrollPane > .scroll-bar:hover,
 .customScrollPane > .scroll-bar:pressed {
   -fx-font-size: 10px;
+  -fx-padding: 0 0 0 0;
   -fx-cursor: hand;
 }
