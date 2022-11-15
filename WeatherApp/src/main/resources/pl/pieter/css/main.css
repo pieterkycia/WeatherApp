@@ -136,19 +136,19 @@
   -fx-padding: 0;
 }
 
-.customScrollPane {
+.customScrollPane, .customScrollPane > .corner {
   -fx-background-color: transparent;
   -fx-background: transparent;
 }
 
-.customScrollPane > .scroll-bar:horizontal,
-.customScrollPane > .scroll-bar:vertical {
+.customScrollPane > .scroll-bar {
   -fx-background-color: transparent;
-  -fx-font-size: 5px;
+  -fx-font-size: 3px;
   -fx-padding: 0 0 0 5px;
 }
 
-.customScrollPane > .increment-button, .customScrollPane > .decrement-button {
+.customScrollPane > .scroll-bar > .increment-button,
+ customScrollPane > .scroll-bar  > .decrement-button {
   -fx-background-color: transparent;
   -fx-border-color: transparent;
 }
@@ -158,26 +158,22 @@
   -fx-background-color: transparent;
 }
 
-.customScrollPane > .scroll-bar:horizontal > .track,
-.customScrollPane > .scroll-bar:vertical > .track {
+.customScrollPane > .scroll-bar > .track {
   -fx-background-color: transparent;
   -fx-border-color: transparent;
 }
 
-.customScrollPane > .scroll-bar:horizontal > .thumb,
-.customScrollPane > .scroll-bar:vertical > .thumb {
+.customScrollPane > .scroll-bar > .thumb {
   -fx-background-color: white;
   -fx-background-radius: 5px;
 }
 
-.customScrollPane > .scroll-bar:horizontal:hover,
-.customScrollPane > .scroll-bar:vertical:hover {
+.customScrollPane > .scroll-bar:hover {
   -fx-font-size: 10px;
   -fx-cursor: hand;
 }
 
-.customScrollPane > .scroll-bar:horizontal:pressed,
-.customScrollPane > .scroll-bar:vertical:pressed {
+.customScrollPane > .scroll-bar:pressed {
   -fx-font-size: 10px;
   -fx-cursor: hand;
 }
