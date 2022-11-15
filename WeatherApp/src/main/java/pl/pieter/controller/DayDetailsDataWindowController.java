@@ -83,9 +83,25 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private void setUpOtherData() {
         rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
-        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi()), "\nNiskie"));
+        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
         humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
         windSpeedLabel.setGraphic(drawCircleBarWind((int) (Math.round(dayData.getWindSpeed() * 3.6)), dayData.getWindDeg()));
+    }
+
+    private String getUviName() {
+        float uvi = dayData.getUvi();
+
+        if (uvi < 3) {
+            return "Niskie";
+        } else if (uvi < 6) {
+            return "Średnie";
+        } else if (uvi < 8) {
+            return "Wysokie";
+        } else if (uvi < 11) {
+            return "Bardzo\nWysokie";
+        } else  {
+            return "Ekstremalne";
+        }
     }
 
     private void setUpMoonData() {
@@ -150,9 +166,9 @@ public class DayDetailsDataWindowController extends BaseController {
         if (text == "" || text == "%") {
             graphicsContext.fillText(progress + text, 57.5, 65);
         } else {
-            graphicsContext.fillText(progress + "", 57.5, 55);
+            graphicsContext.fillText(Math.round(progress / 6.25) + "", 57.5, 55);
             graphicsContext.setFont(Font.font(12));
-            graphicsContext.fillText(text, 57.5, 55);
+            graphicsContext.fillText("\n" + text, 57.5, 55);
         }
         return canvas;
     }
