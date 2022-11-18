@@ -11,6 +11,7 @@ import pl.pieter.view.ViewManager;
 
 public class CurrentDataWindowController extends BaseController {
 
+    private final String DEGREE_SIGN = "\u00B0";
     private CurrentDataModelFx currentDataModelFx;
 
     public CurrentDataWindowController(ViewManager viewManager, String fxmlPath) {
@@ -55,17 +56,37 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentWindSpeedLabel;
 
     public void initialize() {
+        setUpFirstHBox();
+        setUpSecondHBox();
+        setUpThirdHBox();
+        setUpFourthHBox();
+        setUpFifthHBox();
+    }
+
+    private void setUpFirstHBox() {
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
         this.currentCountryLabel.setText(currentDataModelFx.getCountry());
+    }
+
+    private void setUpSecondHBox() {
         this.currentIconImageView.setImage(new Image(setIcon()));
-        this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " \u00B0" + viewManager.getUnit()));
+        this.currentTempLabel.setText(Math.round(currentDataModelFx.getTemp()) + " " + DEGREE_SIGN + viewManager.getUnit());
+    }
+
+    private void setUpThirdHBox() {
         this.currentDescriptionLabel.setText(StringUtils.capitalize(currentDataModelFx.getDescription()));
-        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " \u00B0" + viewManager.getUnit()));
-        this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(Math.round(UnitConverterUtils.metersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed()))) + " km/h");
-        this.currentVisibilityLabel.setText("Widoczność " + String.valueOf(currentDataModelFx.getVisibility()) + " m");
-        this.currentPressureLabel.setText("Ciśnienie " + String.valueOf(currentDataModelFx.getPressure()) + " hPa");
-        this.currentHumidityLabel.setText("Wilgotność " + String.valueOf(currentDataModelFx.getHumidity()) + " %");
-        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(Math.round(currentDataModelFx.getDewPoint()) + " \u00B0" + viewManager.getUnit()));
+    }
+
+    private void setUpFourthHBox() {
+        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + Math.round(currentDataModelFx.getFeelsLike()) + " " + DEGREE_SIGN + viewManager.getUnit());
+        this.currentWindSpeedLabel.setText("Wiatr " + Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed())) + " km/h");
+        this.currentVisibilityLabel.setText("Widoczność " + currentDataModelFx.getVisibility() + " m");
+    }
+
+    private void setUpFifthHBox() {
+        this.currentPressureLabel.setText("Ciśnienie " + currentDataModelFx.getPressure() + " hPa");
+        this.currentHumidityLabel.setText("Wilgotność " + currentDataModelFx.getHumidity() + " %");
+        this.currentDewPointLabel.setText("Temperatura punktu rosy " + Math.round(currentDataModelFx.getDewPoint()) + " " + DEGREE_SIGN + viewManager.getUnit());
     }
 
     private String setIcon() {
