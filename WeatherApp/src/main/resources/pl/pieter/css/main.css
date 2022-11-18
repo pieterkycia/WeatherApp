@@ -99,6 +99,10 @@
   -fx-fill: #FFFFFF;
 }
 
+.windDegreeIcons {
+  -fx-fill: #FFFFFF;
+}
+
 .svgPathIcons {
   -fx-background-color: #FFFFFF;
 }

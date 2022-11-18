@@ -1,9 +1,15 @@
 package pl.pieter.controller;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import pl.pieter.model.CurrentDataModelFx;
 import pl.pieter.utils.StringUtils;
 import pl.pieter.utils.UnitConverterUtils;
@@ -53,6 +59,12 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentVisibilityLabel;
 
     @FXML
+    private Label currentWindDegreeLabel;
+
+    @FXML
+    private Label currentWindDescriptionLabel;
+
+    @FXML
     private Label currentWindSpeedLabel;
 
     public void initialize() {
@@ -79,7 +91,7 @@ public class CurrentDataWindowController extends BaseController {
 
     private void setUpFourthHBox() {
         this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + Math.round(currentDataModelFx.getFeelsLike()) + " " + DEGREE_SIGN + viewManager.getUnit());
-        this.currentWindSpeedLabel.setText("Wiatr " + Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed())) + " km/h");
+        setWind();
         setVisibility();
     }
 
@@ -96,6 +108,19 @@ public class CurrentDataWindowController extends BaseController {
         } else {
             this.currentVisibilityLabel.setText("Widoczność " + UnitConverterUtils.convertMetersToKilometers(visibility) + " km");
         }
+    }
+
+    private void setWind() {
+        this.currentWindDescriptionLabel.setText("Wiatr ");
+        this.currentWindDegreeLabel.setGraphic(setWindDegreeGraphic(currentDataModelFx.getWindDegree()));
+        this.currentWindSpeedLabel.setText(Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed())) + " km/h");
+    }
+
+    private Text setWindDegreeGraphic(int windDegree) {
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "15px");
+        text.getStyleClass().add("windDegreeIcons");
+        text.setRotate(135 + windDegree);
+        return text;
     }
 
     private String setIcon() {

@@ -70,6 +70,14 @@ public class CurrentDataModelFx {
         return currentData.getWindSpeed();
     }
 
+    public boolean hasWindDegree() {
+        return getWindDegree() != -1;
+    }
+
+    public int getWindDegree() {
+        return currentData.getWindDeg();
+    }
+
     public boolean hasVisibility() {
         return getVisibility() != -1;
     }

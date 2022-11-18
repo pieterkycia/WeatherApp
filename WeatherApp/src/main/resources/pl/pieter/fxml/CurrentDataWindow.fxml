@@ -63,11 +63,25 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="currentWindSpeedLabel" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
+                        <HBox spacing="5.0">
+                           <children>
+                              <Label fx:id="currentWindDescriptionLabel" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentWindDegreeLabel" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentWindSpeedLabel" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <Label fx:id="currentVisibilityLabel" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
