@@ -6,4 +6,8 @@ public class UnitConverterUtils {
         return metersPerSecond * 3.6f;
     }
 
+    public static int convertMetersToKilometers(int meters) {
+        return meters / 1000;
+    }
+
 }

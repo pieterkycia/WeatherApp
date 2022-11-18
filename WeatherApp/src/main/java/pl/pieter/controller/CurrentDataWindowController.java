@@ -80,13 +80,22 @@ public class CurrentDataWindowController extends BaseController {
     private void setUpFourthHBox() {
         this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + Math.round(currentDataModelFx.getFeelsLike()) + " " + DEGREE_SIGN + viewManager.getUnit());
         this.currentWindSpeedLabel.setText("Wiatr " + Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed())) + " km/h");
-        this.currentVisibilityLabel.setText("Widoczność " + currentDataModelFx.getVisibility() + " m");
+        setVisibility();
     }
 
     private void setUpFifthHBox() {
         this.currentPressureLabel.setText("Ciśnienie " + currentDataModelFx.getPressure() + " hPa");
         this.currentHumidityLabel.setText("Wilgotność " + currentDataModelFx.getHumidity() + " %");
         this.currentDewPointLabel.setText("Temperatura punktu rosy " + Math.round(currentDataModelFx.getDewPoint()) + " " + DEGREE_SIGN + viewManager.getUnit());
+    }
+
+    private void setVisibility() {
+        int visibility = currentDataModelFx.getVisibility();
+        if (visibility < 1000) {
+            this.currentVisibilityLabel.setText("Widoczność " + visibility + " m");
+        } else {
+            this.currentVisibilityLabel.setText("Widoczność " + UnitConverterUtils.convertMetersToKilometers(visibility) + " km");
+        }
     }
 
     private String setIcon() {
