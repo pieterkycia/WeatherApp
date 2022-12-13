@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -34,7 +33,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <ImageView fx:id="currentIconImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+                        <VBox fx:id="currentIconVBox" alignment="CENTER" />
                         <Label fx:id="currentTempLabel" alignment="TOP_LEFT" contentDisplay="RIGHT" textFill="WHITE">
                            <font>
                               <Font size="50.0" />

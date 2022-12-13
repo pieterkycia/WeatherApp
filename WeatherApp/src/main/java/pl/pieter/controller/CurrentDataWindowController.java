@@ -5,10 +5,12 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pl.pieter.model.CurrentDataModelFx;
 import pl.pieter.utils.StringUtils;
@@ -44,7 +46,7 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentHumidityLabel;
 
     @FXML
-    private ImageView currentIconImageView;
+    private VBox currentIconVBox;
 
     @FXML
     private Label currentPressureLabel;
@@ -81,7 +83,7 @@ public class CurrentDataWindowController extends BaseController {
     }
 
     private void setUpSecondHBox() {
-        this.currentIconImageView.setImage(new Image(setIcon()));
+        this.currentIconVBox.getChildren().add(new ImageView(new Image(setIcon())));
         this.currentTempLabel.setText(Math.round(currentDataModelFx.getTemp()) + " " + DEGREE_SIGN + viewManager.getUnit());
     }
 
