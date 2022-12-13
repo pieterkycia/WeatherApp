@@ -1,15 +1,23 @@
 package pl.pieter.controller;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import pl.pieter.model.CurrentDataModelFx;
 import pl.pieter.utils.StringUtils;
+import pl.pieter.utils.UnitConverterUtils;
 import pl.pieter.view.ViewManager;
 
 public class CurrentDataWindowController extends BaseController {
 
+    private final String DEGREE_SIGN = "\u00B0";
     private CurrentDataModelFx currentDataModelFx;
 
     public CurrentDataWindowController(ViewManager viewManager, String fxmlPath) {
@@ -51,20 +59,68 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentVisibilityLabel;
 
     @FXML
+    private Label currentWindDegreeLabel;
+
+    @FXML
+    private Label currentWindDescriptionLabel;
+
+    @FXML
     private Label currentWindSpeedLabel;
 
     public void initialize() {
+        setUpFirstHBox();
+        setUpSecondHBox();
+        setUpThirdHBox();
+        setUpFourthHBox();
+        setUpFifthHBox();
+    }
+
+    private void setUpFirstHBox() {
         this.currentCityNameLabel.setText(currentDataModelFx.getCityName());
         this.currentCountryLabel.setText(currentDataModelFx.getCountry());
+    }
+
+    private void setUpSecondHBox() {
         this.currentIconImageView.setImage(new Image(setIcon()));
-        this.currentTempLabel.setText(String.valueOf(Math.round(currentDataModelFx.getTemp()) + " \u00B0" + viewManager.getUnit()));
+        this.currentTempLabel.setText(Math.round(currentDataModelFx.getTemp()) + " " + DEGREE_SIGN + viewManager.getUnit());
+    }
+
+    private void setUpThirdHBox() {
         this.currentDescriptionLabel.setText(StringUtils.capitalize(currentDataModelFx.getDescription()));
-        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + String.valueOf(Math.round(currentDataModelFx.getFeelsLike()) + " \u00B0" + viewManager.getUnit()));
-        this.currentWindSpeedLabel.setText("Wiatr " + String.valueOf(Math.round(currentDataModelFx.getWindSpeed())) + " m/s");
-        this.currentVisibilityLabel.setText("Widoczność " + String.valueOf(currentDataModelFx.getVisibility()) + " m");
-        this.currentPressureLabel.setText("Ciśnienie " + String.valueOf(currentDataModelFx.getPressure()) + " hPa");
-        this.currentHumidityLabel.setText("Wilgotność " + String.valueOf(currentDataModelFx.getHumidity()) + " %");
-        this.currentDewPointLabel.setText("Temperatura punktu rosy " + String.valueOf(Math.round(currentDataModelFx.getDewPoint()) + " \u00B0" + viewManager.getUnit()));
+    }
+
+    private void setUpFourthHBox() {
+        this.currentFeelsLikeLabel.setText("Temperatura odczuwalna " + Math.round(currentDataModelFx.getFeelsLike()) + " " + DEGREE_SIGN + viewManager.getUnit());
+        setWind();
+        setVisibility();
+    }
+
+    private void setUpFifthHBox() {
+        this.currentPressureLabel.setText("Ciśnienie " + currentDataModelFx.getPressure() + " hPa");
+        this.currentHumidityLabel.setText("Wilgotność " + currentDataModelFx.getHumidity() + " %");
+        this.currentDewPointLabel.setText("Temperatura punktu rosy " + Math.round(currentDataModelFx.getDewPoint()) + " " + DEGREE_SIGN + viewManager.getUnit());
+    }
+
+    private void setVisibility() {
+        int visibility = currentDataModelFx.getVisibility();
+        if (visibility < 1000) {
+            this.currentVisibilityLabel.setText("Widoczność " + visibility + " m");
+        } else {
+            this.currentVisibilityLabel.setText("Widoczność " + UnitConverterUtils.convertMetersToKilometers(visibility) + " km");
+        }
+    }
+
+    private void setWind() {
+        this.currentWindDescriptionLabel.setText("Wiatr ");
+        this.currentWindDegreeLabel.setGraphic(setWindDegreeGraphic(currentDataModelFx.getWindDegree()));
+        this.currentWindSpeedLabel.setText(Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(currentDataModelFx.getWindSpeed())) + " km/h");
+    }
+
+    private Text setWindDegreeGraphic(int windDegree) {
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "15px");
+        text.getStyleClass().add("windDegreeIcons");
+        text.setRotate(135 + windDegree);
+        return text;
     }
 
     private String setIcon() {
