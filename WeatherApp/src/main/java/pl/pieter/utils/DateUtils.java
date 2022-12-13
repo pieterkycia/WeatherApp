@@ -20,6 +20,13 @@ public class DateUtils {
         return hourString;
     }
 
+    public static int getHourInt(long timeInSeconds) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timeInSeconds * 1000);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        return hour;
+    }
+
     private static String convertNumberToDayName(int number) {
         switch (number) {
             case 1:

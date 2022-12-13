@@ -165,11 +165,25 @@ public class HourlyDataWindowController extends BaseController {
     }
 
     private String setIcon(int index) {
-        String iconPath = "/pl/pieter/icon/empty.png";
-        if (hourlyDataModelFx.hasIcon(index)) {
-            iconPath = "/pl/pieter/icon/" + hourlyDataModelFx.getIcon(index) + ".png";
+        String iconPath = "/pl/pieter/icon/not-available.png";
+        String timeOfDay = "day";
+        if (isEveningTime(index)) {
+            timeOfDay = "night";
+        }
+        if (hourlyDataModelFx.hasId(index)) {
+            iconPath = "/pl/pieter/icon/" + timeOfDay + "/" + hourlyDataModelFx.getId(index) + ".png";
         }
         return iconPath;
+    }
+
+    private boolean isEveningTime(int index) {
+        int currentDt = DateUtils.getHourInt(hourlyDataModelFx.getDt(index));
+        int eveningTime = 20;
+        int morningTime = 5;
+        if (currentDt >= eveningTime || currentDt < morningTime) {
+            return true;
+        }
+        return false;
     }
 
     private ChangeListener<Number> changeListener() {
