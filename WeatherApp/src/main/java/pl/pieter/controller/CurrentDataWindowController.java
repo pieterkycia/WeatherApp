@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pl.pieter.model.CurrentDataModelFx;
+import pl.pieter.utils.DateUtils;
 import pl.pieter.utils.StringUtils;
 import pl.pieter.utils.UnitConverterUtils;
 import pl.pieter.view.ViewManager;
@@ -126,11 +127,25 @@ public class CurrentDataWindowController extends BaseController {
     }
 
     private String setIcon() {
-        String iconPath = "/pl/pieter/icon/empty.png";
-        if (currentDataModelFx.hasIcon()) {
-            iconPath = "/pl/pieter/icon/" + currentDataModelFx.getIcon() + ".png";
+        String iconPath = "/pl/pieter/icon/not-available.png";
+        String timeOfDay = "day";
+        if (isEveningTime()) {
+            timeOfDay = "night";
+        }
+        if (currentDataModelFx.hasId()) {
+            iconPath = "/pl/pieter/icon/" + timeOfDay + "/" + currentDataModelFx.getId() + ".png";
         }
         return iconPath;
+    }
+
+    private boolean isEveningTime() {
+        int currentDt = DateUtils.getHourInt(currentDataModelFx.getDt());
+        int eveningTime = 20;
+        int morningTime = 5;
+        if (currentDt >= eveningTime || currentDt < morningTime) {
+            return true;
+        }
+        return false;
     }
 }
 

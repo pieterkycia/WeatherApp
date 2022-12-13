@@ -30,6 +30,14 @@ public class CurrentDataModelFx {
         return country;
     }
 
+    public boolean hasDt() {
+        return getDt() != -1L;
+    }
+
+    public long getDt() {
+        return currentData.getDt();
+    }
+
     public boolean hasIcon() {
         return !getIcon().contains("-1");
     }
