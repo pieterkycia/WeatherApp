@@ -90,7 +90,7 @@ public class HourlyDataWindowController extends BaseController {
 
         vBox.getChildren().addAll(
                 createDtLabel(index),
-                createIconImageView(index),
+                createWeatherIcon(index),
                 createTempMaxLabel(index),
                 createDescriptionLabel(index)
         );
@@ -106,10 +106,12 @@ public class HourlyDataWindowController extends BaseController {
         return label;
     }
 
-    private ImageView createIconImageView(int index) {
+    private HBox createWeatherIcon(int index) {
         ImageView imageView = new ImageView(new Image(setIcon(index)));
 
-        return imageView;
+        HBox hBox = new HBox(imageView);
+        hBox.getStyleClass().add("weatherIcon");
+        return hBox;
     }
 
     private Label createTempMaxLabel(int index) {
