@@ -198,7 +198,7 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private String setIcon(int index) {
-        String iconPath = "/pl/pieter/icon/empty.png";
+        String iconPath = "/pl/pieter/icon/not-available.png";
         if (dailyDataModelFx.hasIcon(index)) {
             iconPath = "/pl/pieter/icon/" + dailyDataModelFx.getIcon(index) + ".png";
         }
