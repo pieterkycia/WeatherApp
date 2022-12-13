@@ -176,5 +176,5 @@
 }
 
 .weatherIcon {
-  -fx-padding: 0 0 0 -10px ;
+  -fx-padding: -5px 0 -5px -10px;
 }
