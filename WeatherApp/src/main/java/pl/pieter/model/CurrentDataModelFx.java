@@ -38,6 +38,14 @@ public class CurrentDataModelFx {
         return currentData.getWeather().getIcon();
     }
 
+    public boolean hasId() {
+        return getId() != -1;
+    }
+
+    public long getId() {
+        return currentData.getWeather().getId();
+    }
+
     public boolean hasTemp() {
         return getTemp() != -1.0f;
     }
