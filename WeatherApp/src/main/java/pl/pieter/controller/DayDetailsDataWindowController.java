@@ -101,7 +101,7 @@ public class DayDetailsDataWindowController extends BaseController {
             return "Wysokie";
         } else if (uvi < 11) {
             return "Bardzo\nWysokie";
-        } else  {
+        } else {
             return "Ekstremalne";
         }
     }
@@ -214,7 +214,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private VBox setMoonPhase() {
         double step = 100.0 / (MoonPhase.values().length - 1);
-        int moonPhase = (int) Math.floor((dayData.getMoonPhase() * 100) / step);
+        int moonPhase = (int) Math.round((dayData.getMoonPhase() * 100) / step);
 
         HBox moonIconHBox = new HBox();
         moonIconHBox.getChildren().addAll(
@@ -228,7 +228,7 @@ public class DayDetailsDataWindowController extends BaseController {
         description.setFont(Font.font(14));
 
         VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER_LEFT);
+        vBox.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(moonIconHBox, description);
 
         return vBox;
@@ -236,7 +236,6 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private HBox setCurrentPhase(int number) {
         HBox hBox = new HBox();
-        hBox.setPadding(new Insets(0, 3, 0, 3));
         hBox.getStyleClass().add("moonPhaseIconBright");
 
         hBox.getChildren().add(MoonPhase.values()[number].getIcon());
@@ -245,13 +244,13 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private HBox setPreviousPhase(int number) {
-        HBox hBox = new HBox(3);
+        HBox hBox = new HBox();
         hBox.getStyleClass().add("moonPhaseIconDark");
 
         if (number == 0) {
-            number = 28;
+            number = (MoonPhase.values().length - 1);
         } else if (number == 1) {
-            number = 29;
+            number = MoonPhase.values().length;
         }
         hBox.getChildren().addAll(
                 MoonPhase.values()[number - 2].getIcon(),
@@ -261,12 +260,12 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private HBox setNextPhase(int number) {
-        HBox hBox = new HBox(3);
+        HBox hBox = new HBox();
         hBox.getStyleClass().add("moonPhaseIconDark");
 
-        if (number == 27) {
+        if (number == (MoonPhase.values().length - 2)) {
             number = -1;
-        } else if (number == 28) {
+        } else if (number == (MoonPhase.values().length - 1)) {
             number = 0;
         }
         hBox.getChildren().addAll(
@@ -277,57 +276,32 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     public enum MoonPhase {
-        MOON_NEW("Nów", WeatherIcon.MOON_ALT_FULL),
-        MOON_WAXING_CRESCENT_1("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_1),
-        MOON_WAXING_CRESCENT_2("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_2),
-        MOON_WAXING_CRESCENT_3("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_3),
-        MOON_WAXING_CRESCENT_4("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_4),
-        MOON_WAXING_CRESCENT_5("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_5),
-        MOON_WAXING_CRESCENT_6("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_6),
-
-        MOON_FIRST_QUARTER("Pierwsza kwadra", WeatherIcon.MOON_ALT_THIRD_QUARTER),
-
-        MOON_WAXING_GIBBOUS_1("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_1),
-        MOON_WAXING_GIBBOUS_2("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_2),
-        MOON_WAXING_GIBBOUS_3("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_3),
-        MOON_WAXING_GIBBOUS_4("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_4),
-        MOON_WAXING_GIBBOUS_5("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_5),
-        MOON_WAXING_GIBBOUS_6("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_6),
-
-        MOON_FULL("Pełnia", WeatherIcon.MOON_ALT_NEW),
-
-        MOON_WANING_GIBBOUS_1("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_1),
-        MOON_WANING_GIBBOUS_2("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_2),
-        MOON_WANING_GIBBOUS_3("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_3),
-        MOON_WANING_GIBBOUS_4("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_4),
-        MOON_WANING_GIBBOUS_5("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_5),
-        MOON_WANING_GIBBOUS_6("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_6),
-
-        MOON_3RD_QUARTER("Trzecia kwadra", WeatherIcon.MOON_ALT_FIRST_QUARTER),
-
-        MOON_WANING_CRESCENT_1("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_1),
-        MOON_WANING_CRESCENT_2("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_2),
-        MOON_WANING_CRESCENT_3("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_3),
-        MOON_WANING_CRESCENT_4("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_4),
-        MOON_WANING_CRESCENT_5("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_5),
-        MOON_WANING_CRESCENT_6("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_6),
-
-        MOON_NEW_2("Nów", WeatherIcon.MOON_ALT_FULL);
+        MOON_NEW("Nów", "moon-new.png"),
+        MOON_WAXING_CRESCENT("Przychodzący sierp", "moon-waxing-crescent.png"),
+        MOON_FIRST_QUARTER("Pierwsza kwadra", "moon-first-quarter.png"),
+        MOON_WAXING_GIBBOUS("Przychodzący garb", "moon-waxing-gibbous.png"),
+        MOON_FULL("Pełnia", "moon-full.png"),
+        MOON_WANING_GIBBOUS("Zanikający garb", "moon-waning-gibbous.png"),
+        MOON_3RD_QUARTER("Trzecia kwadra", "moon-last-quarter.png"),
+        MOON_WANING_CRESCENT("Zanikający sierp", "moon-waning-crescent.png"),
+        MOON_NEW_2("Nów", "moon-new.png");
 
         private String description;
-        private WeatherIcon icon;
+        private String iconPath;
 
-        MoonPhase(String description, WeatherIcon icon) {
+        MoonPhase(String description, String iconPath) {
             this.description = description;
-            this.icon = icon;
+            this.iconPath = iconPath;
         }
 
         public String getDescription() {
             return description;
         }
 
-        public Text getIcon() {
-            return GlyphsDude.createIcon(icon, "40px");
+        public HBox getIcon() {
+            HBox hBox = new HBox(new ImageView(new Image(getClass().getResourceAsStream("/pl/pieter/icon/details/moon/" + this.iconPath))));
+            hBox.getStyleClass().add("moonPhaseIcon");
+            return hBox;
         }
     }
 
