@@ -8,6 +8,8 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -346,5 +348,12 @@ public class DayDetailsDataWindowController extends BaseController {
         public Text getIcon() {
             return GlyphsDude.createIcon(icon, "40px");
         }
+    }
+
+    private HBox createGraphic(String graphicPath, String styleClass) {
+        HBox hBox = new HBox(new ImageView(new Image(getClass().getResourceAsStream(graphicPath))));
+        hBox.getStyleClass().add(styleClass);
+
+        return hBox;
     }
 }
