@@ -174,10 +174,13 @@
 .dayDetailsTempIcon,
 .dayDetailsSunIcon,
 .dayDetailsMoonIcon,
+.moonPhaseIcon {
+  -fx-padding: 0px 5px 0px 0px;
+}
+
 .dayDetailsRainIcon,
 .dayDetailsUvIcon,
 .dayDetailsHumidityIcon,
-.dayDetailsWindIcon,
-.moonPhaseIcon {
-  -fx-padding: 0px 5px 0px 0px;
+.dayDetailsWindIcon {
+  -fx-padding: -5px 5px 0px 0px;
 }

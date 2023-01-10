@@ -112,7 +112,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private void setUpUvData() {
         uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
-        uvIndexDescriptionLabel.setText("UV");
+        uvIndexDescriptionLabel.setText("Index UV");
         uvIndexDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/uv-index.png", "dayDetailsUvIcon"));
     }
 
