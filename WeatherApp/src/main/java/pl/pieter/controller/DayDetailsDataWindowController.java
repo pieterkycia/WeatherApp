@@ -30,7 +30,7 @@ import java.util.Date;
 public class DayDetailsDataWindowController extends BaseController {
 
     private DailyData.DayData dayData;
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("  HH:mm");
+    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private static final char degreeSign = 176;
 
     public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index) {
@@ -122,17 +122,11 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private void setUpSunData() {
-        Text sunRiseIcon = GlyphsDude.createIcon(WeatherIcon.SUNRISE, "25px");
-        sunRiseIcon.getStyleClass().add("dayDetailsIcons");
-
-        Text sunSetIcon = GlyphsDude.createIcon(WeatherIcon.SUNSET, "25px");
-        sunSetIcon.getStyleClass().add("dayDetailsIcons");
-
         sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
-        sunriseLabel.setGraphic(sunRiseIcon);
-
         sunsetLabel.setText(simpleDateFormat.format(new Date(dayData.getSunset() * 1000)));
-        sunsetLabel.setGraphic(sunSetIcon);
+
+        sunriseLabel.setGraphic(createGraphic("/pl/pieter/icon/details/sun/sunrise.png", "dayDetailsSunIcon"));
+        sunsetLabel.setGraphic(createGraphic("/pl/pieter/icon/details/sun/sunset.png", "dayDetailsSunIcon"));
     }
 
     private void setUpTemperatureData() {
