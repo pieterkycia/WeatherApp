@@ -92,14 +92,34 @@ public class DayDetailsDataWindowController extends BaseController {
         setUpTemperatureData();
         setUpSunData();
         setUpMoonData();
-        setUpOtherData();
+        setUpRainData();
+        setUpUvData();
+        setUpHumidityData();
+        setUpWindData();
     }
 
-    private void setUpOtherData() {
-        rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
-        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
-        humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
+    private void setUpWindData() {
         windSpeedLabel.setGraphic(drawCircleBarWind((int) (Math.round(dayData.getWindSpeed() * 3.6)), dayData.getWindDeg()));
+        windSpeedDescriptionLabel.setText("Wiatr");
+        windSpeedDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/wind.png", "dayDetailsWindIcon"));
+    }
+
+    private void setUpHumidityData() {
+        humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
+        humidityDescriptionLabel.setText("Wilgotność");
+        humidityDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/humidity.png", "dayDetailsHumidityIcon"));
+    }
+
+    private void setUpUvData() {
+        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
+        uvIndexDescriptionLabel.setText("UV");
+        uvIndexDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/uv-index.png", "dayDetailsUvIcon"));
+    }
+
+    private void setUpRainData() {
+        rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
+        rainDescriptionLabel.setText("Opady");
+        rainDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/raindrops.png", "dayDetailsRainIcon"));
     }
 
     private String getUviName() {
