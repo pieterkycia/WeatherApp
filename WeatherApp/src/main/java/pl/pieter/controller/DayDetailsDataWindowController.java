@@ -136,19 +136,11 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private void setUpTemperatureData() {
-        maxTempLabel.setText("  " + Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit());
-        minTempLabel.setText("  " + Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit());
+        maxTempLabel.setText(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit());
+        minTempLabel.setText(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit());
 
-        Region maxTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MAX.getSvgPath(), 20, 30);
-        maxTempIcon.setRotate(180);
-        maxTempIcon.getStyleClass().add("svgPathIcons");
-
-        Region minTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MIN.getSvgPath(), 20, 30);
-        minTempIcon.setRotate(180);
-        minTempIcon.getStyleClass().add("svgPathIcons");
-
-        maxTempLabel.setGraphic(maxTempIcon);
-        minTempLabel.setGraphic(minTempIcon);
+        maxTempLabel.setGraphic(createGraphic("/pl/pieter/icon/details/temperature/thermometer-warmer.png", "dayDetailsTempIcon"));
+        minTempLabel.setGraphic(createGraphic("/pl/pieter/icon/details/temperature/thermometer-colder.png", "dayDetailsTempIcon"));
     }
 
     private Canvas drawCircleBarProgress(int progress, String text) {
