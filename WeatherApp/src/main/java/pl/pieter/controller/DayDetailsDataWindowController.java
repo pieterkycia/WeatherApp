@@ -42,6 +42,9 @@ public class DayDetailsDataWindowController extends BaseController {
     private Label humidityLabel;
 
     @FXML
+    private Label humidityDescriptionLabel;
+
+    @FXML
     private Label maxTempLabel;
 
     @FXML
@@ -60,6 +63,9 @@ public class DayDetailsDataWindowController extends BaseController {
     private Label rainLabel;
 
     @FXML
+    private Label rainDescriptionLabel;
+
+    @FXML
     private Label sunriseLabel;
 
     @FXML
@@ -69,7 +75,13 @@ public class DayDetailsDataWindowController extends BaseController {
     private Label uvIndexLabel;
 
     @FXML
+    private Label uvIndexDescriptionLabel;
+
+    @FXML
     private Label windSpeedLabel;
+
+    @FXML
+    private Label windSpeedDescriptionLabel;
 
     @FXML
     private VBox vBoxData;
