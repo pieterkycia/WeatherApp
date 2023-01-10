@@ -107,16 +107,11 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private void setUpMoonData() {
-        Text moonRiseIcon = GlyphsDude.createIcon(WeatherIcon.MOONRISE, "25px");
-        moonRiseIcon.getStyleClass().add("dayDetailsIcons");
-
-        Text moonSetIcon = GlyphsDude.createIcon(WeatherIcon.MOONSET, "25px");
-        moonSetIcon.getStyleClass().add("dayDetailsIcons");
-
         moonriseLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonrise() * 1000)));
-        moonriseLabel.setGraphic(moonRiseIcon);
         moonsetLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonset() * 1000)));
-        moonsetLabel.setGraphic(moonSetIcon);
+
+        moonriseLabel.setGraphic(createGraphic("/pl/pieter/icon/details/moon/moonrise.png", "dayDetailsMoonIcon"));
+        moonsetLabel.setGraphic(createGraphic("/pl/pieter/icon/details/moon/moonset.png", "dayDetailsMoonIcon"));
 
         moonPhaseVBox.getChildren().add(setMoonPhase());
     }
