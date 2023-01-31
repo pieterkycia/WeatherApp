@@ -1,13 +1,16 @@
 package pl.pieter.controller;
 
+import com.sun.javafx.scene.layout.region.LayeredBackgroundPositionConverter;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.animation.Animation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -92,9 +95,19 @@ public class HourlyDataWindowController extends BaseController {
                 createDtLabel(index),
                 createWeatherIcon(index),
                 createTempMaxLabel(index),
-                createDescriptionLabel(index)
+                createDescriptionLabel(index),
+                createHumidityLabel(index)
         );
         return vBox;
+    }
+
+    private Label createHumidityLabel(int index) {
+        Label label = new Label();
+        label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
+        label.getGraphic().getStyleClass().add("hourlyIcons");
+        label.setText(" " + hourlyDataModelFx.getHumidity(index) + "%");
+
+        return label;
     }
 
     private Label createDtLabel(int index) {

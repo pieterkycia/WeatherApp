@@ -53,4 +53,12 @@ public class HourlyDataModelFx {
     public String getDescription(int index) {
         return hourlyData.getHourDataList().get(index).getWeather().getDescription();
     }
+
+    public boolean hasHumidity(int index) {
+        return getHumidity(index) != -1;
+    }
+
+    public int getHumidity(int index) {
+        return hourlyData.getHourDataList().get(index).getHumidity();
+    }
 }
