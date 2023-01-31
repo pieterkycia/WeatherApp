@@ -186,5 +186,6 @@
 }
 
 .hourlyIcons {
-  -fx-fill: #FFFFFF;
+  -fx-fill: #AAAAAA;
+  -fx-text-fill: #AAAAAA;
 }

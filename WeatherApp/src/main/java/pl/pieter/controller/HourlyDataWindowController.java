@@ -97,14 +97,22 @@ public class HourlyDataWindowController extends BaseController {
                 createWeatherIcon(index),
                 createTempMaxLabel(index),
                 createDescriptionLabel(index),
+                createSpace(),
                 createHumidityLabel(index),
                 createWindDegreeData(index)
         );
         return vBox;
     }
 
+    private Label createSpace() {
+        Label label = new Label();
+        label.setFont(Font.font(7));
+        return label;
+    }
+
     private Label createWindDegreeData(int index) {
         Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
         label.setGraphic(setWindDegreeGraphic(hourlyDataModelFx.getWindDegree(index)));
         label.setText(" " + hourlyDataModelFx.getWindSpeed(index));
         int windSpeed = Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(hourlyDataModelFx.getWindSpeed(index)));
@@ -122,6 +130,7 @@ public class HourlyDataWindowController extends BaseController {
 
     private Label createHumidityLabel(int index) {
         Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
         label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
         label.getGraphic().getStyleClass().add("hourlyIcons");
         label.setText(" " + hourlyDataModelFx.getHumidity(index) + " %");
