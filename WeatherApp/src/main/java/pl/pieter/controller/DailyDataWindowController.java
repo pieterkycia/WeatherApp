@@ -117,7 +117,7 @@ public class DailyDataWindowController extends BaseController {
 
         vBox.getChildren().addAll(
                 createDtLabel(index),
-                createIconImageView(index),
+                createWeatherIcon(index),
                 createHboxWithTempsValue(index),
                 createDescriptionLabel(index)
         );
@@ -163,10 +163,12 @@ public class DailyDataWindowController extends BaseController {
         return label;
     }
 
-    private ImageView createIconImageView(int index) {
+    private HBox createWeatherIcon(int index) {
         ImageView imageView = new ImageView(new Image(setIcon(index)));
 
-        return imageView;
+        HBox hBox = new HBox(imageView);
+        hBox.getStyleClass().add("weatherIcon");
+        return hBox;
     }
 
     private Label createDescriptionLabel(int index) {
@@ -198,9 +200,9 @@ public class DailyDataWindowController extends BaseController {
     }
 
     private String setIcon(int index) {
-        String iconPath = "/pl/pieter/icon/empty.png";
-        if (dailyDataModelFx.hasIcon(index)) {
-            iconPath = "/pl/pieter/icon/" + dailyDataModelFx.getIcon(index) + ".png";
+        String iconPath = "/pl/pieter/icon/not-available.png";
+        if (dailyDataModelFx.hasId(index)) {
+            iconPath = "/pl/pieter/icon/day/" + dailyDataModelFx.getId(index) + ".png";
         }
         return iconPath;
     }

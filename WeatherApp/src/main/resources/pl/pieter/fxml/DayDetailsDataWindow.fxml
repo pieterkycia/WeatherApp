@@ -139,7 +139,7 @@
                            <children>
                               <VBox minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
-                                    <Label text="Opady" textFill="WHITE">
+                                    <Label fx:id="rainDescriptionLabel" text="Opady" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -149,7 +149,7 @@
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="10.0" text="Indeks UV" textFill="WHITE">
+                                    <Label fx:id="uvIndexDescriptionLabel" layoutX="10.0" layoutY="10.0" text="Indeks UV" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -163,7 +163,7 @@
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity">
                                  <children>
-                                    <Label text="Wilgotność" textFill="WHITE">
+                                    <Label fx:id="humidityDescriptionLabel" text="Wilgotność" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>
@@ -173,7 +173,7 @@
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="10.0" layoutY="10.0" text="Wiatr" textFill="WHITE">
+                                    <Label fx:id="windSpeedDescriptionLabel" layoutX="10.0" layoutY="10.0" text="Wiatr" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>

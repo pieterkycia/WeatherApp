@@ -8,6 +8,8 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -28,7 +30,7 @@ import java.util.Date;
 public class DayDetailsDataWindowController extends BaseController {
 
     private DailyData.DayData dayData;
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("  HH:mm");
+    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private static final char degreeSign = 176;
 
     public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index) {
@@ -38,6 +40,9 @@ public class DayDetailsDataWindowController extends BaseController {
 
     @FXML
     private Label humidityLabel;
+
+    @FXML
+    private Label humidityDescriptionLabel;
 
     @FXML
     private Label maxTempLabel;
@@ -58,6 +63,9 @@ public class DayDetailsDataWindowController extends BaseController {
     private Label rainLabel;
 
     @FXML
+    private Label rainDescriptionLabel;
+
+    @FXML
     private Label sunriseLabel;
 
     @FXML
@@ -67,7 +75,13 @@ public class DayDetailsDataWindowController extends BaseController {
     private Label uvIndexLabel;
 
     @FXML
+    private Label uvIndexDescriptionLabel;
+
+    @FXML
     private Label windSpeedLabel;
+
+    @FXML
+    private Label windSpeedDescriptionLabel;
 
     @FXML
     private VBox vBoxData;
@@ -78,14 +92,34 @@ public class DayDetailsDataWindowController extends BaseController {
         setUpTemperatureData();
         setUpSunData();
         setUpMoonData();
-        setUpOtherData();
+        setUpRainData();
+        setUpUvData();
+        setUpHumidityData();
+        setUpWindData();
     }
 
-    private void setUpOtherData() {
-        rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
-        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
-        humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
+    private void setUpWindData() {
         windSpeedLabel.setGraphic(drawCircleBarWind((int) (Math.round(dayData.getWindSpeed() * 3.6)), dayData.getWindDeg()));
+        windSpeedDescriptionLabel.setText("Wiatr");
+        windSpeedDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/wind.png", "dayDetailsWindIcon"));
+    }
+
+    private void setUpHumidityData() {
+        humidityLabel.setGraphic(drawCircleBarProgress(dayData.getHumidity(), "%"));
+        humidityDescriptionLabel.setText("Wilgotność");
+        humidityDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/humidity.png", "dayDetailsHumidityIcon"));
+    }
+
+    private void setUpUvData() {
+        uvIndexLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getUvi() * 6.25f), getUviName()));
+        uvIndexDescriptionLabel.setText("Index UV");
+        uvIndexDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/uv-index.png", "dayDetailsUvIcon"));
+    }
+
+    private void setUpRainData() {
+        rainLabel.setGraphic(drawCircleBarProgress(Math.round(dayData.getPop() * 100), "%"));
+        rainDescriptionLabel.setText("Opady");
+        rainDescriptionLabel.setGraphic(createGraphic("/pl/pieter/icon/details/other/raindrops.png", "dayDetailsRainIcon"));
     }
 
     private String getUviName() {
@@ -99,54 +133,35 @@ public class DayDetailsDataWindowController extends BaseController {
             return "Wysokie";
         } else if (uvi < 11) {
             return "Bardzo\nWysokie";
-        } else  {
+        } else {
             return "Ekstremalne";
         }
     }
 
     private void setUpMoonData() {
-        Text moonRiseIcon = GlyphsDude.createIcon(WeatherIcon.MOONRISE, "25px");
-        moonRiseIcon.getStyleClass().add("dayDetailsIcons");
-
-        Text moonSetIcon = GlyphsDude.createIcon(WeatherIcon.MOONSET, "25px");
-        moonSetIcon.getStyleClass().add("dayDetailsIcons");
-
         moonriseLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonrise() * 1000)));
-        moonriseLabel.setGraphic(moonRiseIcon);
         moonsetLabel.setText(simpleDateFormat.format(new Date(dayData.getMoonset() * 1000)));
-        moonsetLabel.setGraphic(moonSetIcon);
+
+        moonriseLabel.setGraphic(createGraphic("/pl/pieter/icon/details/moon/moonrise.png", "dayDetailsMoonIcon"));
+        moonsetLabel.setGraphic(createGraphic("/pl/pieter/icon/details/moon/moonset.png", "dayDetailsMoonIcon"));
 
         moonPhaseVBox.getChildren().add(setMoonPhase());
     }
 
     private void setUpSunData() {
-        Text sunRiseIcon = GlyphsDude.createIcon(WeatherIcon.SUNRISE, "25px");
-        sunRiseIcon.getStyleClass().add("dayDetailsIcons");
-
-        Text sunSetIcon = GlyphsDude.createIcon(WeatherIcon.SUNSET, "25px");
-        sunSetIcon.getStyleClass().add("dayDetailsIcons");
-
         sunriseLabel.setText(simpleDateFormat.format(new Date(dayData.getSunrise() * 1000)));
-        sunriseLabel.setGraphic(sunRiseIcon);
-
         sunsetLabel.setText(simpleDateFormat.format(new Date(dayData.getSunset() * 1000)));
-        sunsetLabel.setGraphic(sunSetIcon);
+
+        sunriseLabel.setGraphic(createGraphic("/pl/pieter/icon/details/sun/sunrise.png", "dayDetailsSunIcon"));
+        sunsetLabel.setGraphic(createGraphic("/pl/pieter/icon/details/sun/sunset.png", "dayDetailsSunIcon"));
     }
 
     private void setUpTemperatureData() {
-        maxTempLabel.setText("  " + Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit());
-        minTempLabel.setText("  " + Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit());
+        maxTempLabel.setText(Math.round(dayData.getTemp().getMax()) + " " + degreeSign + viewManager.getUnit());
+        minTempLabel.setText(Math.round(dayData.getTemp().getMin()) + " " + degreeSign + viewManager.getUnit());
 
-        Region maxTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MAX.getSvgPath(), 20, 30);
-        maxTempIcon.setRotate(180);
-        maxTempIcon.getStyleClass().add("svgPathIcons");
-
-        Region minTempIcon = new SvgGlyphUtils(IconsUtils.TEMPERATURE_MIN.getSvgPath(), 20, 30);
-        minTempIcon.setRotate(180);
-        minTempIcon.getStyleClass().add("svgPathIcons");
-
-        maxTempLabel.setGraphic(maxTempIcon);
-        minTempLabel.setGraphic(minTempIcon);
+        maxTempLabel.setGraphic(createGraphic("/pl/pieter/icon/details/temperature/thermometer-warmer.png", "dayDetailsTempIcon"));
+        minTempLabel.setGraphic(createGraphic("/pl/pieter/icon/details/temperature/thermometer-colder.png", "dayDetailsTempIcon"));
     }
 
     private Canvas drawCircleBarProgress(int progress, String text) {
@@ -231,7 +246,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private VBox setMoonPhase() {
         double step = 100.0 / (MoonPhase.values().length - 1);
-        int moonPhase = (int) Math.floor((dayData.getMoonPhase() * 100) / step);
+        int moonPhase = (int) Math.round((dayData.getMoonPhase() * 100) / step);
 
         HBox moonIconHBox = new HBox();
         moonIconHBox.getChildren().addAll(
@@ -245,7 +260,7 @@ public class DayDetailsDataWindowController extends BaseController {
         description.setFont(Font.font(14));
 
         VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER_LEFT);
+        vBox.setAlignment(Pos.CENTER);
         vBox.getChildren().addAll(moonIconHBox, description);
 
         return vBox;
@@ -253,7 +268,6 @@ public class DayDetailsDataWindowController extends BaseController {
 
     private HBox setCurrentPhase(int number) {
         HBox hBox = new HBox();
-        hBox.setPadding(new Insets(0, 3, 0, 3));
         hBox.getStyleClass().add("moonPhaseIconBright");
 
         hBox.getChildren().add(MoonPhase.values()[number].getIcon());
@@ -262,13 +276,13 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private HBox setPreviousPhase(int number) {
-        HBox hBox = new HBox(3);
+        HBox hBox = new HBox();
         hBox.getStyleClass().add("moonPhaseIconDark");
 
         if (number == 0) {
-            number = 28;
+            number = (MoonPhase.values().length - 1);
         } else if (number == 1) {
-            number = 29;
+            number = MoonPhase.values().length;
         }
         hBox.getChildren().addAll(
                 MoonPhase.values()[number - 2].getIcon(),
@@ -278,12 +292,12 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     private HBox setNextPhase(int number) {
-        HBox hBox = new HBox(3);
+        HBox hBox = new HBox();
         hBox.getStyleClass().add("moonPhaseIconDark");
 
-        if (number == 27) {
+        if (number == (MoonPhase.values().length - 2)) {
             number = -1;
-        } else if (number == 28) {
+        } else if (number == (MoonPhase.values().length - 1)) {
             number = 0;
         }
         hBox.getChildren().addAll(
@@ -294,57 +308,39 @@ public class DayDetailsDataWindowController extends BaseController {
     }
 
     public enum MoonPhase {
-        MOON_NEW("Nów", WeatherIcon.MOON_ALT_FULL),
-        MOON_WAXING_CRESCENT_1("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_1),
-        MOON_WAXING_CRESCENT_2("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_2),
-        MOON_WAXING_CRESCENT_3("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_3),
-        MOON_WAXING_CRESCENT_4("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_4),
-        MOON_WAXING_CRESCENT_5("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_5),
-        MOON_WAXING_CRESCENT_6("Przychadzący sierp", WeatherIcon.MOON_ALT_WANING_GIBBOUS_6),
-
-        MOON_FIRST_QUARTER("Pierwsza kwadra", WeatherIcon.MOON_ALT_THIRD_QUARTER),
-
-        MOON_WAXING_GIBBOUS_1("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_1),
-        MOON_WAXING_GIBBOUS_2("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_2),
-        MOON_WAXING_GIBBOUS_3("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_3),
-        MOON_WAXING_GIBBOUS_4("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_4),
-        MOON_WAXING_GIBBOUS_5("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_5),
-        MOON_WAXING_GIBBOUS_6("Przychodzący garb", WeatherIcon.MOON_ALT_WANING_CRESCENT_6),
-
-        MOON_FULL("Pełnia", WeatherIcon.MOON_ALT_NEW),
-
-        MOON_WANING_GIBBOUS_1("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_1),
-        MOON_WANING_GIBBOUS_2("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_2),
-        MOON_WANING_GIBBOUS_3("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_3),
-        MOON_WANING_GIBBOUS_4("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_4),
-        MOON_WANING_GIBBOUS_5("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_5),
-        MOON_WANING_GIBBOUS_6("Zanikający garb", WeatherIcon.MOON_ALT_WAXING_CRESCENT_6),
-
-        MOON_3RD_QUARTER("Trzecia kwadra", WeatherIcon.MOON_ALT_FIRST_QUARTER),
-
-        MOON_WANING_CRESCENT_1("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_1),
-        MOON_WANING_CRESCENT_2("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_2),
-        MOON_WANING_CRESCENT_3("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_3),
-        MOON_WANING_CRESCENT_4("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_4),
-        MOON_WANING_CRESCENT_5("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_5),
-        MOON_WANING_CRESCENT_6("Zanikający sierp", WeatherIcon.MOON_ALT_WAXING_GIBBOUS_6),
-
-        MOON_NEW_2("Nów", WeatherIcon.MOON_ALT_FULL);
+        MOON_NEW("Nów", "moon-new.png"),
+        MOON_WAXING_CRESCENT("Przychodzący sierp", "moon-waxing-crescent.png"),
+        MOON_FIRST_QUARTER("Pierwsza kwadra", "moon-first-quarter.png"),
+        MOON_WAXING_GIBBOUS("Przychodzący garb", "moon-waxing-gibbous.png"),
+        MOON_FULL("Pełnia", "moon-full.png"),
+        MOON_WANING_GIBBOUS("Zanikający garb", "moon-waning-gibbous.png"),
+        MOON_3RD_QUARTER("Trzecia kwadra", "moon-last-quarter.png"),
+        MOON_WANING_CRESCENT("Zanikający sierp", "moon-waning-crescent.png"),
+        MOON_NEW_2("Nów", "moon-new.png");
 
         private String description;
-        private WeatherIcon icon;
+        private String iconPath;
 
-        MoonPhase(String description, WeatherIcon icon) {
+        MoonPhase(String description, String iconPath) {
             this.description = description;
-            this.icon = icon;
+            this.iconPath = iconPath;
         }
 
         public String getDescription() {
             return description;
         }
 
-        public Text getIcon() {
-            return GlyphsDude.createIcon(icon, "40px");
+        public HBox getIcon() {
+            HBox hBox = new HBox(new ImageView(new Image(getClass().getResourceAsStream("/pl/pieter/icon/details/moon/" + this.iconPath))));
+            hBox.getStyleClass().add("moonPhaseIcon");
+            return hBox;
         }
+    }
+
+    private HBox createGraphic(String graphicPath, String styleClass) {
+        HBox hBox = new HBox(new ImageView(new Image(getClass().getResourceAsStream(graphicPath))));
+        hBox.getStyleClass().add(styleClass);
+
+        return hBox;
     }
 }

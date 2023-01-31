@@ -30,6 +30,14 @@ public class HourlyDataModelFx {
         return hourlyData.getHourDataList().get(index).getWeather().getIcon();
     }
 
+    public boolean hasId(int index) {
+        return getId(index) != -1;
+    }
+
+    public long getId(int index) {
+        return hourlyData.getHourDataList().get(index).getWeather().getId();
+    }
+
     public boolean hasTempMax(int index) {
         return getTempMax(index) != -1.0f;
     }

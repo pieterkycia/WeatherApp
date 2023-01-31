@@ -87,24 +87,8 @@
   -fx-border-width: 0 0 1 0;
 }
 
-.moonPhaseIconBright > .glyph-icon {
-  -fx-fill: #FFFFFF;
-}
-
-.moonPhaseIconDark > .glyph-icon {
-  -fx-fill: #4B5BF2;
-}
-
-.dayDetailsIcons {
-  -fx-fill: #FFFFFF;
-}
-
 .windDegreeIcons {
   -fx-fill: #FFFFFF;
-}
-
-.svgPathIcons {
-  -fx-background-color: #FFFFFF;
 }
 
 .alert {
@@ -173,4 +157,30 @@
   -fx-font-size: 10px;
   -fx-padding: 0 0 0 0;
   -fx-cursor: hand;
+}
+
+.weatherIcon {
+  -fx-padding: -5px 0 -5px -10px;
+}
+
+.moonPhaseIconBright {
+  -fx-opacity: 1;
+}
+
+.moonPhaseIconDark {
+  -fx-opacity: 0.2;
+}
+
+.dayDetailsTempIcon,
+.dayDetailsSunIcon,
+.dayDetailsMoonIcon,
+.moonPhaseIcon {
+  -fx-padding: 0px 5px 0px 0px;
+}
+
+.dayDetailsRainIcon,
+.dayDetailsUvIcon,
+.dayDetailsHumidityIcon,
+.dayDetailsWindIcon {
+  -fx-padding: -5px 5px 0px 0px;
 }

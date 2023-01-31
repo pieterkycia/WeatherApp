@@ -5,12 +5,15 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pl.pieter.model.CurrentDataModelFx;
+import pl.pieter.utils.DateUtils;
 import pl.pieter.utils.StringUtils;
 import pl.pieter.utils.UnitConverterUtils;
 import pl.pieter.view.ViewManager;
@@ -44,7 +47,7 @@ public class CurrentDataWindowController extends BaseController {
     private Label currentHumidityLabel;
 
     @FXML
-    private ImageView currentIconImageView;
+    private VBox currentIconVBox;
 
     @FXML
     private Label currentPressureLabel;
@@ -81,7 +84,7 @@ public class CurrentDataWindowController extends BaseController {
     }
 
     private void setUpSecondHBox() {
-        this.currentIconImageView.setImage(new Image(setIcon()));
+        this.currentIconVBox.getChildren().add(new ImageView(new Image(setIcon())));
         this.currentTempLabel.setText(Math.round(currentDataModelFx.getTemp()) + " " + DEGREE_SIGN + viewManager.getUnit());
     }
 
@@ -124,11 +127,25 @@ public class CurrentDataWindowController extends BaseController {
     }
 
     private String setIcon() {
-        String iconPath = "/pl/pieter/icon/empty.png";
-        if (currentDataModelFx.hasIcon()) {
-            iconPath = "/pl/pieter/icon/" + currentDataModelFx.getIcon() + ".png";
+        String iconPath = "/pl/pieter/icon/not-available.png";
+        String timeOfDay = "day";
+        if (isEveningTime()) {
+            timeOfDay = "night";
+        }
+        if (currentDataModelFx.hasId()) {
+            iconPath = "/pl/pieter/icon/" + timeOfDay + "/" + currentDataModelFx.getId() + ".png";
         }
         return iconPath;
+    }
+
+    private boolean isEveningTime() {
+        int currentDt = DateUtils.getHourInt(currentDataModelFx.getDt());
+        int eveningTime = 20;
+        int morningTime = 5;
+        if (currentDt >= eveningTime || currentDt < morningTime) {
+            return true;
+        }
+        return false;
     }
 }
 
