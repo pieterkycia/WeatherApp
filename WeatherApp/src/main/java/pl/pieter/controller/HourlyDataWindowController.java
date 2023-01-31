@@ -26,6 +26,7 @@ import pl.pieter.model.HourlyDataModelFx;
 import pl.pieter.utils.AnimationUtils;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.utils.StringUtils;
+import pl.pieter.utils.UnitConverterUtils;
 import pl.pieter.view.ViewManager;
 
 public class HourlyDataWindowController extends BaseController {
@@ -96,16 +97,34 @@ public class HourlyDataWindowController extends BaseController {
                 createWeatherIcon(index),
                 createTempMaxLabel(index),
                 createDescriptionLabel(index),
-                createHumidityLabel(index)
+                createHumidityLabel(index),
+                createWindDegreeData(index)
         );
         return vBox;
+    }
+
+    private Label createWindDegreeData(int index) {
+        Label label = new Label();
+        label.setGraphic(setWindDegreeGraphic(hourlyDataModelFx.getWindDegree(index)));
+        label.setText(" " + hourlyDataModelFx.getWindSpeed(index));
+        int windSpeed = Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(hourlyDataModelFx.getWindSpeed(index)));
+        label.setText(" " + windSpeed + " km/h");
+
+        return label;
+    }
+
+    private Text setWindDegreeGraphic(int windDegree) {
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "12px");
+        text.getStyleClass().add("hourlyIcons");
+        text.setRotate(135 + windDegree);
+        return text;
     }
 
     private Label createHumidityLabel(int index) {
         Label label = new Label();
         label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
         label.getGraphic().getStyleClass().add("hourlyIcons");
-        label.setText(" " + hourlyDataModelFx.getHumidity(index) + "%");
+        label.setText(" " + hourlyDataModelFx.getHumidity(index) + " %");
 
         return label;
     }
