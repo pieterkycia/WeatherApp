@@ -31,6 +31,9 @@ public class MainWindowController extends BaseController {
     private ComboBox<CountryCodes> countryComboBox;
 
     @FXML
+    private VBox mainVBox;
+
+    @FXML
     private VBox dataVBox;
 
     @FXML
