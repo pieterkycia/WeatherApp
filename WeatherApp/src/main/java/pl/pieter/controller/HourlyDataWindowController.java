@@ -2,6 +2,7 @@ package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.animation.Animation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,6 +24,7 @@ import pl.pieter.model.HourlyDataModelFx;
 import pl.pieter.utils.AnimationUtils;
 import pl.pieter.utils.DateUtils;
 import pl.pieter.utils.StringUtils;
+import pl.pieter.utils.UnitConverterUtils;
 import pl.pieter.view.ViewManager;
 
 public class HourlyDataWindowController extends BaseController {
@@ -92,7 +94,9 @@ public class HourlyDataWindowController extends BaseController {
                 createDtLabel(index),
                 createWeatherIcon(index),
                 createTempMaxLabel(index),
-                createDescriptionLabel(index)
+                createDescriptionLabel(index),
+                createHumidityLabel(index),
+                createWindDegreeLabel(index)
         );
         return vBox;
     }
@@ -111,6 +115,7 @@ public class HourlyDataWindowController extends BaseController {
 
         HBox hBox = new HBox(imageView);
         hBox.getStyleClass().add("weatherIcon");
+
         return hBox;
     }
 
@@ -126,8 +131,38 @@ public class HourlyDataWindowController extends BaseController {
         Label label = new Label(StringUtils.capitalize(hourlyDataModelFx.getDescription(index)));
         label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
+        label.setAlignment(Pos.TOP_LEFT);
+        label.setMinHeight(42);
 
         return label;
+    }
+
+    private Label createHumidityLabel(int index) {
+        Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
+        label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
+        label.getGraphic().getStyleClass().add("hourlyIcons");
+        label.setText(" " + hourlyDataModelFx.getHumidity(index) + " %");
+
+        return label;
+    }
+
+    private Label createWindDegreeLabel(int index) {
+        Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
+        label.setGraphic(createWindDegreeGraphic(hourlyDataModelFx.getWindDegree(index)));
+        label.setText(" " + hourlyDataModelFx.getWindSpeed(index));
+        int windSpeed = Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(hourlyDataModelFx.getWindSpeed(index)));
+        label.setText(" " + windSpeed + " km/h");
+
+        return label;
+    }
+
+    private Text createWindDegreeGraphic(int windDegree) {
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "12px");
+        text.getStyleClass().add("hourlyIcons");
+        text.setRotate(135 + windDegree);
+        return text;
     }
 
     private void setUpScrollPane() {
