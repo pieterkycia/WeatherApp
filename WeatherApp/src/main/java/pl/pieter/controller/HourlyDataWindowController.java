@@ -1,6 +1,5 @@
 package pl.pieter.controller;
 
-import com.sun.javafx.scene.layout.region.LayeredBackgroundPositionConverter;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.weathericons.WeatherIcon;
@@ -10,7 +9,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -97,45 +95,10 @@ public class HourlyDataWindowController extends BaseController {
                 createWeatherIcon(index),
                 createTempMaxLabel(index),
                 createDescriptionLabel(index),
-                createSpace(),
                 createHumidityLabel(index),
-                createWindDegreeData(index)
+                createWindDegreeLabel(index)
         );
         return vBox;
-    }
-
-    private Label createSpace() {
-        Label label = new Label();
-        label.setFont(Font.font(7));
-        return label;
-    }
-
-    private Label createWindDegreeData(int index) {
-        Label label = new Label();
-        label.getStyleClass().add("hourlyIcons");
-        label.setGraphic(setWindDegreeGraphic(hourlyDataModelFx.getWindDegree(index)));
-        label.setText(" " + hourlyDataModelFx.getWindSpeed(index));
-        int windSpeed = Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(hourlyDataModelFx.getWindSpeed(index)));
-        label.setText(" " + windSpeed + " km/h");
-
-        return label;
-    }
-
-    private Text setWindDegreeGraphic(int windDegree) {
-        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "12px");
-        text.getStyleClass().add("hourlyIcons");
-        text.setRotate(135 + windDegree);
-        return text;
-    }
-
-    private Label createHumidityLabel(int index) {
-        Label label = new Label();
-        label.getStyleClass().add("hourlyIcons");
-        label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
-        label.getGraphic().getStyleClass().add("hourlyIcons");
-        label.setText(" " + hourlyDataModelFx.getHumidity(index) + " %");
-
-        return label;
     }
 
     private Label createDtLabel(int index) {
@@ -152,6 +115,7 @@ public class HourlyDataWindowController extends BaseController {
 
         HBox hBox = new HBox(imageView);
         hBox.getStyleClass().add("weatherIcon");
+
         return hBox;
     }
 
@@ -167,8 +131,38 @@ public class HourlyDataWindowController extends BaseController {
         Label label = new Label(StringUtils.capitalize(hourlyDataModelFx.getDescription(index)));
         label.setTextFill(Paint.valueOf("#FFFFFF"));
         label.setWrapText(true);
+        label.setAlignment(Pos.TOP_LEFT);
+        label.setMinHeight(42);
 
         return label;
+    }
+
+    private Label createHumidityLabel(int index) {
+        Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
+        label.setGraphic(GlyphsDude.createIcon(WeatherIcon.HUMIDITY, "12px"));
+        label.getGraphic().getStyleClass().add("hourlyIcons");
+        label.setText(" " + hourlyDataModelFx.getHumidity(index) + " %");
+
+        return label;
+    }
+
+    private Label createWindDegreeLabel(int index) {
+        Label label = new Label();
+        label.getStyleClass().add("hourlyIcons");
+        label.setGraphic(createWindDegreeGraphic(hourlyDataModelFx.getWindDegree(index)));
+        label.setText(" " + hourlyDataModelFx.getWindSpeed(index));
+        int windSpeed = Math.round(UnitConverterUtils.convertMetersPerSecondToKilometersPerHour(hourlyDataModelFx.getWindSpeed(index)));
+        label.setText(" " + windSpeed + " km/h");
+
+        return label;
+    }
+
+    private Text createWindDegreeGraphic(int windDegree) {
+        Text text = GlyphsDude.createIcon(FontAwesomeIcon.LOCATION_ARROW, "12px");
+        text.getStyleClass().add("hourlyIcons");
+        text.setRotate(135 + windDegree);
+        return text;
     }
 
     private void setUpScrollPane() {
