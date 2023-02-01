@@ -55,6 +55,7 @@ public class MainWindowController extends BaseController {
         setUpSearchButton();
         setUpTopBarHBox();
         setUpCountryComboBox();
+        mainVBox.getStyleClass().add("mainBackground");
 
         cityNameTextField.setText("korytniki");
         countryComboBox.setValue(CountryCodes.PL);
@@ -75,6 +76,7 @@ public class MainWindowController extends BaseController {
         try {
             viewManager.getWeatherManager().createNewWeatherDataModelFx(cityNameTextField.getText(), countryComboBox.getValue().name());
             loadAllData();
+            loadCssStyleSheets();
         } catch (IOException e) {
             System.out.println("IOException");
             setEmptyWindow();
@@ -85,6 +87,11 @@ public class MainWindowController extends BaseController {
             System.out.println("Exception");
             setEmptyWindow();
         }
+    }
+
+    private void loadCssStyleSheets() {
+        mainVBox.getStylesheets().add(getClass().getResource("/pl/pieter/css/main.css").toExternalForm());
+        mainVBox.getStylesheets().add(getClass().getResource("/pl/pieter/css/medium.css").toExternalForm());
     }
 
     private void loadAllData() {
