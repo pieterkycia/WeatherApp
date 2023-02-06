@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pl.pieter.utils.CountryCodes;
 import pl.pieter.utils.FxmlUtils;
+import pl.pieter.utils.Theme;
 import pl.pieter.view.ViewManager;
 
 import java.io.IOException;
@@ -29,6 +30,9 @@ public class MainWindowController extends BaseController {
 
     @FXML
     private ComboBox<CountryCodes> countryComboBox;
+
+    @FXML
+    private ComboBox<Theme> themeComboBox;
 
     @FXML
     private VBox mainVBox;
