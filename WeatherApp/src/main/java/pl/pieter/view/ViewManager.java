@@ -5,6 +5,7 @@ import javafx.scene.layout.VBox;
 import pl.pieter.WeatherManager;
 import pl.pieter.controller.*;
 import pl.pieter.utils.FxmlUtils;
+import pl.pieter.utils.Theme;
 import pl.pieter.weather.library.WeatherClient;
 
 public class ViewManager {
@@ -18,10 +19,14 @@ public class ViewManager {
 
     private WeatherManager weatherManager;
     private MainWindowController mainWindowController;
+    private int dayDetailsId;
+    private String themeColor;
 
     public ViewManager(WeatherManager weatherManager) {
         this.weatherManager = weatherManager;
         this.mainWindowController = new MainWindowController(this, "/pl/pieter/fxml/MainWindow.fxml");
+        this.dayDetailsId = FIRST_ITEM;
+        this.themeColor = Theme.MEDIUM.toString();
     }
 
     public WeatherManager getWeatherManager() {
@@ -58,7 +63,8 @@ public class ViewManager {
     }
 
     public void loadDayDetailsDataWindow(int index) {
-        BaseController controller = new DayDetailsDataWindowController(this, "/pl/pieter/fxml/DayDetailsDataWindow.fxml", index);
+        this.dayDetailsId = index;
+        BaseController controller = new DayDetailsDataWindowController(this, "/pl/pieter/fxml/DayDetailsDataWindow.fxml", dayDetailsId, themeColor);
         mainWindowController.setDataVBox(DAY_DETAILS_DATA_VBOX, controller);
     }
 

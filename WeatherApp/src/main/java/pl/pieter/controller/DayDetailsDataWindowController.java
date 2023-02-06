@@ -25,8 +25,9 @@ public class DayDetailsDataWindowController extends BaseController {
     private DailyData.DayData dayData;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private static final char degreeSign = 176;
+    private String themeColor;
 
-    public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index) {
+    public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index, String themeColor) {
         super(viewManager, fxmlPath);
         this.dayData = viewManager.getWeatherManager().getWeatherDataModelFx().getDailyDataModelFx().getDailyData().getDayDataList().get(index);
     }
