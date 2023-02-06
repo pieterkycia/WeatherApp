@@ -59,6 +59,7 @@ public class MainWindowController extends BaseController {
         setUpSearchButton();
         setUpTopBarHBox();
         setUpCountryComboBox();
+        setUpThemeComboBox();
         mainVBox.getStyleClass().add("mainBackground");
         loadCssStyleSheets();
 
@@ -149,5 +150,13 @@ public class MainWindowController extends BaseController {
         }
         countryComboBox.getStyleClass().add("text-input");
         countryComboBox.getStyleClass().add("countryComboBox");
+    }
+
+    private void setUpThemeComboBox() {
+        for (int i = 0; i <Theme.values().length; i++) {
+            themeComboBox.getItems().add(Theme.values()[i]);
+        }
+        themeComboBox.getStyleClass().add("text-input");
+        themeComboBox.getStyleClass().add("themeComboBox");
     }
 }
