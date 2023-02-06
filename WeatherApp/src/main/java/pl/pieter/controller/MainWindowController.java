@@ -2,6 +2,8 @@ package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -158,5 +160,14 @@ public class MainWindowController extends BaseController {
         }
         themeComboBox.getStyleClass().add("text-input");
         themeComboBox.getStyleClass().add("themeComboBox");
+
+        themeComboBox.valueProperty().addListener(new ChangeListener<Theme>() {
+            @Override
+            public void changed(ObservableValue<? extends Theme> observableValue, Theme oldValue, Theme newValue) {
+                mainVBox.getStylesheets().set(1, newValue.getPath());
+                viewManager.setThemeColor(newValue.toString());
+                viewManager.loadDayDetailsDataWindow(viewManager.getDayDetailsId());
+            }
+        });
     }
 }

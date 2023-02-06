@@ -12,7 +12,7 @@ public enum Theme {
     }
 
     public String getPath() {
-        return getClass().getResource("/css/" + this.path.toLowerCase() + ".css").toExternalForm();
+        return getClass().getResource("/pl/pieter/css/" + this.path.toLowerCase() + ".css").toExternalForm();
     }
 
     @Override

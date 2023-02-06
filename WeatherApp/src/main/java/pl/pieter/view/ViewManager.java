@@ -80,4 +80,12 @@ public class ViewManager {
     public String getUnit() {
         return this.weatherManager.getWeatherDataModelFx().getWeatherClient().getUnit().getShortName();
     }
+
+    public int getDayDetailsId() {
+        return this.dayDetailsId;
+    }
+
+    public void setThemeColor(String themeColor) {
+        this.themeColor = themeColor;
+    }
 }
