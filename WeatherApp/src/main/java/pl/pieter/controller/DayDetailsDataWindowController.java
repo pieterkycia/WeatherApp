@@ -161,7 +161,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
     public void updateThemeStyle(String theme) {
         if (theme.equals("Light")) {
-            this.themeColor = "#2939D0";
+            this.themeColor = "#0066cc";
         } else if (theme.equals("Medium")) {
             this.themeColor = "#4B5BF2";
         } else if (theme.equals("Dark")) {
