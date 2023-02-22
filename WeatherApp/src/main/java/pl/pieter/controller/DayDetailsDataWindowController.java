@@ -165,7 +165,7 @@ public class DayDetailsDataWindowController extends BaseController {
         } else if (theme.equals("Medium")) {
             this.themeColor = "#4B5BF2";
         } else if (theme.equals("Dark")) {
-            this.themeColor = "grey";
+            this.themeColor = "#4d4d4d";
         } else {
             this.themeColor = "white";
         }

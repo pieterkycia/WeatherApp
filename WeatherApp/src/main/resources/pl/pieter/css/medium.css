@@ -33,7 +33,7 @@
 }
 
 .dailyWindowIcons {
-  -fx-fill: #6D7DF4;
+  -fx-fill: #4B5BF2;
 }
 
 .dailyWindowButtons:hover > .dailyWindowIcons {
@@ -42,7 +42,7 @@
 }
 
 .hourlyWindowIcons {
-  -fx-fill: #6D7DF4;
+  -fx-fill: #4B5BF2;
 }
 
 .hourlyWindowButtons:hover > .hourlyWindowIcons {

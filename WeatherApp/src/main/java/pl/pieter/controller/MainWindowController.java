@@ -155,9 +155,10 @@ public class MainWindowController extends BaseController {
     }
 
     private void setUpThemeComboBox() {
-        for (int i = 0; i <Theme.values().length; i++) {
+        for (int i = 0; i < Theme.values().length; i++) {
             themeComboBox.getItems().add(Theme.values()[i]);
         }
+        themeComboBox.setValue(Theme.MEDIUM);
         themeComboBox.getStyleClass().add("text-input");
         themeComboBox.getStyleClass().add("themeComboBox");
 

@@ -1,0 +1,52 @@
+.mainBackground {
+  -fx-background-color: linear-gradient(to top right, rgba(0,0,0,1) 0%, rgba(1,100,138,1) 100%);
+  -fx-background-color: #000000;
+}
+
+.clickedVbox {
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: transparent;
+  -fx-border-radius: 5px;
+  -fx-background-color: #4d4d4d;
+  -fx-background-radius: 5px;
+}
+
+.clickedVbox:hover {
+  -fx-border-style: solid;
+  -fx-border-width: 1px;
+  -fx-border-color: white;
+  -fx-border-radius: 5px;
+  -fx-cursor: hand;
+}
+
+.topBar {
+  -fx-background-color: #4d4d4d;
+}
+
+.topBarButtons {
+  -fx-background-color: transparent;
+}
+
+.topBarButtons:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #808080;
+}
+
+.dailyWindowIcons {
+  -fx-fill: #4d4d4d;
+}
+
+.dailyWindowButtons:hover > .dailyWindowIcons {
+  -fx-cursor: hand;
+  -fx-fill: white;
+}
+
+.hourlyWindowIcons {
+  -fx-fill: #4d4d4d;
+}
+
+.hourlyWindowButtons:hover > .hourlyWindowIcons {
+  -fx-cursor: hand;
+  -fx-fill: white;
+}
