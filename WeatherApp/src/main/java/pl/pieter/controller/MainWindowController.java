@@ -65,7 +65,7 @@ public class MainWindowController extends BaseController {
         mainVBox.getStyleClass().add("mainBackground");
         loadCssStyleSheets();
 
-        cityNameTextField.setText("korytniki");
+        cityNameTextField.setText("Rzeszów");
         countryComboBox.setValue(CountryCodes.PL);
         searchOnAction();
     }
