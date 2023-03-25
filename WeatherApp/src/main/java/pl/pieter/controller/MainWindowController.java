@@ -2,6 +2,8 @@ package pl.pieter.controller;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pl.pieter.utils.CountryCodes;
 import pl.pieter.utils.FxmlUtils;
+import pl.pieter.utils.Theme;
 import pl.pieter.view.ViewManager;
 
 import java.io.IOException;
@@ -29,6 +32,12 @@ public class MainWindowController extends BaseController {
 
     @FXML
     private ComboBox<CountryCodes> countryComboBox;
+
+    @FXML
+    private ComboBox<Theme> themeComboBox;
+
+    @FXML
+    private VBox mainVBox;
 
     @FXML
     private VBox dataVBox;
@@ -52,8 +61,11 @@ public class MainWindowController extends BaseController {
         setUpSearchButton();
         setUpTopBarHBox();
         setUpCountryComboBox();
+        setUpThemeComboBox();
+        mainVBox.getStyleClass().add("mainBackground");
+        loadCssStyleSheets();
 
-        cityNameTextField.setText("korytniki");
+        cityNameTextField.setText("Rzeszów");
         countryComboBox.setValue(CountryCodes.PL);
         searchOnAction();
     }
@@ -82,6 +94,11 @@ public class MainWindowController extends BaseController {
             System.out.println("Exception");
             setEmptyWindow();
         }
+    }
+
+    private void loadCssStyleSheets() {
+        mainVBox.getStylesheets().add(getClass().getResource("/pl/pieter/css/main.css").toExternalForm());
+        mainVBox.getStylesheets().add(getClass().getResource("/pl/pieter/css/medium.css").toExternalForm());
     }
 
     private void loadAllData() {
@@ -135,5 +152,23 @@ public class MainWindowController extends BaseController {
         }
         countryComboBox.getStyleClass().add("text-input");
         countryComboBox.getStyleClass().add("countryComboBox");
+    }
+
+    private void setUpThemeComboBox() {
+        for (int i = 0; i < Theme.values().length; i++) {
+            themeComboBox.getItems().add(Theme.values()[i]);
+        }
+        themeComboBox.setValue(Theme.MEDIUM);
+        themeComboBox.getStyleClass().add("text-input");
+        themeComboBox.getStyleClass().add("themeComboBox");
+
+        themeComboBox.valueProperty().addListener(new ChangeListener<Theme>() {
+            @Override
+            public void changed(ObservableValue<? extends Theme> observableValue, Theme oldValue, Theme newValue) {
+                mainVBox.getStylesheets().set(1, newValue.getPath());
+                viewManager.setThemeColor(newValue.toString());
+                viewManager.loadDayDetailsDataWindow(viewManager.getDayDetailsId());
+            }
+        });
     }
 }

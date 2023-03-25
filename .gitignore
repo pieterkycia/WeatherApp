@@ -27,5 +27,3 @@ target/
 out/
 .idea/
 
-#Config file
-Config.java

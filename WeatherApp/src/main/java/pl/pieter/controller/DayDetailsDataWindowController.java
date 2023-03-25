@@ -25,10 +25,12 @@ public class DayDetailsDataWindowController extends BaseController {
     private DailyData.DayData dayData;
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private static final char degreeSign = 176;
+    private String themeColor;
 
-    public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index) {
+    public DayDetailsDataWindowController(ViewManager viewManager, String fxmlPath, int index, String themeColor) {
         super(viewManager, fxmlPath);
         this.dayData = viewManager.getWeatherManager().getWeatherDataModelFx().getDailyDataModelFx().getDailyData().getDayDataList().get(index);
+        updateThemeStyle(themeColor);
     }
 
     @FXML
@@ -157,6 +159,18 @@ public class DayDetailsDataWindowController extends BaseController {
         minTempLabel.setGraphic(createGraphic("/pl/pieter/icon/details/temperature/thermometer-colder.png", "dayDetailsTempIcon"));
     }
 
+    public void updateThemeStyle(String theme) {
+        if (theme.equals("Light")) {
+            this.themeColor = "#0066cc";
+        } else if (theme.equals("Medium")) {
+            this.themeColor = "#4B5BF2";
+        } else if (theme.equals("Dark")) {
+            this.themeColor = "#4d4d4d";
+        } else {
+            this.themeColor = "white";
+        }
+    }
+
     private Canvas drawCircleBarProgress(int progress, String text) {
         Canvas canvas = new Canvas(115, 115);
         GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
@@ -165,7 +179,7 @@ public class DayDetailsDataWindowController extends BaseController {
         graphicsContext.setFont(Font.font(20));
         graphicsContext.setTextAlign(TextAlignment.CENTER);
 
-        graphicsContext.setStroke(Color.valueOf("#4B5BF2"));
+        graphicsContext.setStroke(Color.valueOf(themeColor));
         graphicsContext.strokeArc(17.5, 17.5, 80, 80, 0, 360, ArcType.OPEN);
 
         graphicsContext.setStroke(Color.WHITE);
@@ -192,7 +206,7 @@ public class DayDetailsDataWindowController extends BaseController {
 
         graphicsContext.strokeArc(17.5, 17.5, 80, 80, 0, 360, ArcType.OPEN);
 
-        graphicsContext.setStroke(Color.valueOf("#4B5BF2"));
+        graphicsContext.setStroke(Color.valueOf(themeColor));
         double deg = 28.5;
         for (int i = 0; i < 8; i++) {
             graphicsContext.strokeArc(17.5, 17.5, 80, 80, deg, 34, ArcType.OPEN);

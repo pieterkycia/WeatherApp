@@ -1,3 +1,7 @@
+.mainBackground {
+  -fx-background-color:  #003D99;
+}
+
 .clearVbox {
   -fx-border-style: solid;
   -fx-border-width: 1px;
@@ -13,42 +17,12 @@
   -fx-cursor: hand;
 }
 
-.clickedVbox {
-  -fx-border-style: solid;
-  -fx-border-width: 1px;
-  -fx-border-color: transparent;
-  -fx-border-radius: 5px;
-  -fx-background-color: #3A4AE1;
-  -fx-background-radius: 5px;
-}
-
-.clickedVbox:hover {
-  -fx-border-style: solid;
-  -fx-border-width: 1px;
-  -fx-border-color: white;
-  -fx-border-radius: 5px;
-  -fx-cursor: hand;
-}
-
-.dailyWindowIcons {
-  -fx-fill: #6D7DF4;
-}
-
 .dailyWindowButtons {
   -fx-background-color: transparent;
 }
 
 .dailyWindowButtons:hover {
   -fx-cursor: hand;
-}
-
-.dailyWindowButtons:hover > .dailyWindowIcons {
-  -fx-cursor: hand;
-  -fx-fill: white;
-}
-
-.hourlyWindowIcons {
-  -fx-fill: #6D7DF4;
 }
 
 .hourlyWindowButtons {
@@ -59,26 +33,8 @@
   -fx-cursor: hand;
 }
 
-.hourlyWindowButtons:hover > .hourlyWindowIcons {
-  -fx-cursor: hand;
-  -fx-fill: white;
-}
-
-.topBarButtons {
-  -fx-background-color: transparent;
-}
-
-.topBarButtons:hover {
-  -fx-cursor: hand;
-  -fx-background-color: #4B5BF2;
-}
-
 .topBarIcons {
   -fx-fill: #FFFFFF;
-}
-
-.topBar {
-  -fx-background-color: #002C88;
 }
 
 .separator *.line {
@@ -114,12 +70,14 @@
   -fx-background-color: #70DB70;
 }
 
-.countryComboBox {
+.countryComboBox,
+.themeComboBox {
   -fx-font-size: 12px;
   -fx-cursor: hand;
 }
 
-.countryComboBox >.list-cell{
+.countryComboBox >.list-cell,
+.themeComboBox >.list-cell {
   -fx-font-size: 16px;
   -fx-padding: 0;
 }
